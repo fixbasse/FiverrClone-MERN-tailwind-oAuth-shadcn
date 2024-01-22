@@ -1,4 +1,3 @@
-import Navbar from '@/components/navbar/Navbar'
 import Banner from './Banner'
 import GetStart from './GetStart'
 import Hero from './Hero'
@@ -10,8 +9,6 @@ import Talent from './Talent'
 const HomePage = () => {
   return (
     <>
-      <Navbar />
-
       <Hero />
       <HomeCategory />
       <Popular />

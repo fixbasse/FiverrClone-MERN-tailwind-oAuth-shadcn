@@ -52,7 +52,7 @@ const NavLinks = ({
                 )}
             </div>
             <Link
-                to='/become-a-seller'
+                to='/become-a-seller/overview'
                 className={`hidden lg:block
             ${onScroll
                     && 'hover:text-orange-800 text-gray-500'}

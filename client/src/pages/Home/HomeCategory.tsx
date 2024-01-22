@@ -57,7 +57,8 @@ const HomeCategory = () => {
 
             {homeCategoryData.map((item) => (
                 <Link
-                    to={`/categories${item.href}`}
+                    to={`/categories`}
+                    //to={`/categories${item.href}`}
                     key={item.label}
                     className='flex flex-col gap-4 border max-[1024px]:m-4 rounded-xl shadow-md p-4 text-gray-900 font-semibold h-[130px] max-h-[130px] max-[1024px]:min-w-[130px] md:w-[100px] lg:w-[130px] cursor-pointer hover:bg-gray-50'>
 
