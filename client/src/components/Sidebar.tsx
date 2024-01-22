@@ -15,7 +15,7 @@ export function Sidebar() {
                         <button className="max-[768px]:block hidden">
                             <Menu
                                 size={30}
-                                    className={window.scrollY > 0 ? 'text-gray-800': 'text-white'}
+                                    className={window.scrollY > 0 ? 'text-gray-800': 'text-white max-[425px]:absolute left-4 top-6'}
                             />
                         </button>
                     </SheetTrigger>

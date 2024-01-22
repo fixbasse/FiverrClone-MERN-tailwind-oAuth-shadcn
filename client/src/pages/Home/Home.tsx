@@ -1,4 +1,4 @@
-import Banner from './Banner'
+import Banner from './HomeBanner'
 import GetStart from './GetStart'
 import Hero from './Hero'
 import HomeCategory from './HomeCategory'

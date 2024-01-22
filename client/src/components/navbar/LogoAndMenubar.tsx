@@ -10,7 +10,7 @@ const LogoAndMenubar = ({
     onScroll
 }: LogoProps) => {
     return (
-        <div className='flex items-center gap-4 font-bold text-4xl'>
+        <div className='flex items-center max-[425px]:mx-auto gap-4 font-bold text-3xl md:text-4xl'>
             <Sidebar />
 
             <div className='flex'>

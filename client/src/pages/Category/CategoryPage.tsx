@@ -1,6 +1,5 @@
-import { ArrowRight, FileVideoIcon } from 'lucide-react'
-import React from 'react'
-import Banner from './Banner'
+import { ArrowRight } from 'lucide-react'
+import Banner from './CategoryBanner'
 import { categoriesInfo } from '@/data/data'
 import { AccordionCategories } from '@/components/CategoriesAccordion'
 import Navbar from '@/components/navbar/Navbar'
@@ -15,7 +14,6 @@ const CategoryPage = () => {
       {/* BANNER */}
       <div className='px-4 md:px-8'>
         <Banner />
-
       </div>
 
       {/* Explore */}

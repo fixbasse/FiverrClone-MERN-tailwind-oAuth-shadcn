@@ -53,7 +53,7 @@ export const homeCategoryData = [
 
 const HomeCategory = () => {
     return (
-        <div className='px-6 max-[425px]:grid-cols-2 max-[768px]:grid max-[768px]:grid-cols-3 lg:px-20 py-4 pb-10 md:flex md:overflow-auto lg:justify-between'>
+        <div className='px- max-[425px]:grid-cols-2 max-[768px]:grid max-[768px]:grid-cols-3 lg:px-20 py-4 pb-10 md:flex md:overflow-auto lg:justify-between'>
 
             {homeCategoryData.map((item) => (
                 <Link
@@ -67,7 +67,7 @@ const HomeCategory = () => {
                     </span>
 
                     <div>
-                        <h2>
+                        <h2 className='max-[425px]:text-sm'>
                             {item.label}
                         </h2>
                     </div>

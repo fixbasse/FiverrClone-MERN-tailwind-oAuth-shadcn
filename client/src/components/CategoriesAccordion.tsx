@@ -22,7 +22,7 @@ export function AccordionCategories() {
                             alt=""
                         />
                         <AccordionTrigger
-                            className="text-xl"
+                            className="sm:text-xl max-[425px]:w-[150px]"
                         >
                             {item.label}
                         </AccordionTrigger>
@@ -32,7 +32,7 @@ export function AccordionCategories() {
                         {item.lists.map((list) => (
                             <AccordionContent
                                 key={list.title}
-                                className="text-xl font-light text-gray-500 p-4 hover:underline"
+                                className="sm:text-xl font-light text-gray-500 p-4 hover:underline"
                             >
                                 {list.title}
                             </AccordionContent>

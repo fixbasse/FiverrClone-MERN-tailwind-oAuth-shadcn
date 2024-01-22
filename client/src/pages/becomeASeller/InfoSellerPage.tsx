@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form"
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 type InfoSellerTypes = {
     firstname: string;
@@ -12,6 +13,7 @@ type InfoSellerTypes = {
 
 const InfoSeller = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const {
         register,
         handleSubmit
@@ -23,9 +25,10 @@ const InfoSeller = () => {
 
         try {
             const res = await axios.post('/', value)
-            console.log(res.data);
 
+            console.log(res.data);
             toast.success('Success!');
+            setShowModal(true);
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong.');
@@ -129,6 +132,33 @@ const InfoSeller = () => {
                 </form>
 
             </section>
+
+            {/* FINISH */}
+            <div className={`fixed h-full w-full bg-black/20 inset-0 z-10
+            ${showModal ? 'block' : 'hidden'}
+            `}>
+
+                <div className="flex items-center justify-center h-full">
+                    <div className="bg-white w-[700px] p-8 rounded-sm text-center flex flex-col items-center gap-4">
+
+                        <h1 className='text-3xl font-semibold'>
+                            Your seller profile is ready
+                        </h1>
+                        <span className=" text-gray-500">
+                            Now go ahead and create your first Gig to start selling your services. You can edit your profile information anytime.
+                        </span>
+
+
+                        <Link
+                            to='/create'
+                            className="p-2 px-4 font-semibold bg-orange-800 rounded-sm text-white"
+                        >
+                            Done
+                        </Link>
+                    </div>
+                </div>
+
+            </div>
 
         </div>
     )

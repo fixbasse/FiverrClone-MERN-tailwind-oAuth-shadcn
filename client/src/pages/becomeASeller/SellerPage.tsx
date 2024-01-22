@@ -1,4 +1,4 @@
-import OverviewSeller from '@/components/SellerPageComponents/SellerInfo/OverviewSeller'
+import OverviewSeller from '@/pages/BecomeASeller/OverviewSeller'
 import Navbar from '@/components/navbar/Navbar'
 
 const SellerPage = () => {

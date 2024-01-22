@@ -2,7 +2,7 @@ import { explore } from '@/data/data';
 import { Glasses, Pencil } from 'lucide-react';
 import { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import { LoginModals } from '../LoginModals';
+import { Modals } from '../modals/Modals';
 import { Link } from 'react-router-dom';
 
 interface NavLinksProps {
@@ -60,7 +60,7 @@ const NavLinks = ({
                 Become a Seller
             </Link>
             <div className='hidden sm:block'>
-                <LoginModals
+                <Modals
                     title='Sign in'
                     onScroll={onScroll}
                 />
@@ -68,16 +68,16 @@ const NavLinks = ({
 
             {/* If no USER Trigger LoginModals */}
             {currentUser ? (
-                <button className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer
+                <button className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer max-[425px]:hidden
                 ${onScroll && 'text-gray-500'}
                 `}>
                     Join
                 </button>
             ) : (
-                <div className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer
+                <div className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer max-[425px]:hidden
                 ${onScroll && 'text-gray-500'}
                 `}>
-                    <LoginModals
+                    <Modals
                         title='Join'
                     />
                 </div>

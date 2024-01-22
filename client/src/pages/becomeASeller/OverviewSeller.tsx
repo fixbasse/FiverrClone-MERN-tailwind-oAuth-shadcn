@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const OverviewSeller = () => {
   return (
-    <div className='md:h-[100dvh] pt-24 p-4 md:px-20 flex flex-col-reverse gap-14 md:flex-row items-center justify-center'>
+    <div className='md:h-[100dvh] pt-24 p-4 md:px-20 flex flex-col-reverse gap-4 md:gap-24 md:flex-row items-center justify-center'>
 
     <section className='md:flex-1'>
       <h1 className='text-2xl font-semibold'>
@@ -16,7 +16,7 @@ const OverviewSeller = () => {
 
       <div className='py-8'>
         <hr />
-        <article className='flex py-4 gap-2'>
+        <article className='flex py-8 gap-2'>
           <Book size={50} />
           <div>
             <h2 className='font-semibold'>
@@ -29,7 +29,7 @@ const OverviewSeller = () => {
         </article>
 
         <hr />
-        <article className='flex py-4 gap-2'>
+        <article className='flex py-8 gap-2'>
           <PictureInPicture2Icon size={50} />
           <div>
             <h2 className='font-semibold'>
@@ -41,7 +41,7 @@ const OverviewSeller = () => {
           </div>
         </article>
         <hr />
-        <article className='flex py-4 gap-2'>
+        <article className='flex py-8 gap-2'>
           <ShoppingBag size={50} />
           <div>
             <h2 className='font-semibold'>
@@ -68,7 +68,7 @@ const OverviewSeller = () => {
 
     <section className='md:flex-1 w-full'>
       <img
-        src="https://images.pexels.com/photos/16861541/pexels-photo-16861541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        src="https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
         alt=""
         className='rounded-lg h-[300px] w-full object-cover'
       />
