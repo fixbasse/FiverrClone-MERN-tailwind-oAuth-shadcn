@@ -1,4 +1,6 @@
-import { Menu } from 'lucide-react'
+import { Link } from "react-router-dom";
+import { Sidebar } from "../Sidebar";
+
 
 interface LogoProps {
     onScroll: boolean;
@@ -9,16 +11,16 @@ const LogoAndMenubar = ({
 }: LogoProps) => {
     return (
         <div className='flex items-center gap-4 font-bold text-4xl'>
-            <Menu
-                className='lg:hidden'
-                size={30}
-            />
+            <Sidebar />
+
             <div className='flex'>
-                <h1 className={`text-white
-                    ${onScroll && 'text-gray-800'}
+                <Link
+                    to='/'
+                    className={`
+                    ${onScroll && 'text-gray-600'}
                 `}>
-                    fiverr
-                </h1>
+                    ActivePeople
+                </Link>
                 <span className='text-green-500'>
                     .
                 </span>

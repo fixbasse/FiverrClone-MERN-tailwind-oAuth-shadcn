@@ -2,9 +2,11 @@
 import { useEffect, useState } from 'react'
 import LogoAndMenubar from './LogoAndMenubar'
 import NavLinks from './NavLinks'
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [onScroll, setOnScroll] = useState(false);
+    const location = useLocation();
 
     const isActive = () => {
         window.scrollY > 0 ? setOnScroll(true) : setOnScroll(false);
@@ -12,16 +14,16 @@ const Navbar = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', isActive);
+        
         return () => {
             window.addEventListener('scroll', isActive);
         };
     }, [isActive]);
 
-
-
     return (
-        <nav className={`bg-green-800 text-white px-6 lg:px-10 h-[80px] max-h-[80px] flex items-center justify-between
-        ${onScroll && 'bg-white text-gray-500 duration-500 ease-in-out'}
+        <nav className={`bg-orange-900 text-white px-6 lg:px-20 h-[80px] max-h-[80px] flex items-center justify-between fixed w-full z-50
+        ${onScroll && 'bg-white duration-500 ease-in-out'}
+    
         `}>
             <LogoAndMenubar onScroll={onScroll} />
             <NavLinks onScroll={onScroll} />

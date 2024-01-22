@@ -2,7 +2,8 @@ import { explore } from '@/data/data';
 import { Glasses, Pencil } from 'lucide-react';
 import { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import { Modals } from '../Modals';
+import { LoginModals } from '../LoginModals';
+import { Link } from 'react-router-dom';
 
 interface NavLinksProps {
     onScroll: boolean;
@@ -13,13 +14,15 @@ const NavLinks = ({
 }: NavLinksProps) => {
     const [onOpen, setOnOpen] = useState(false);
     const [exploreOpen, setExploreOpen] = useState(false);
-    
+
+    const currentUser = !true;
+
     return (
         <div className='font-semibold flex items-center gap-6'>
-            {/* PRO */}
+            {/* PRO Button */}
             <div
                 onClick={() => setOnOpen(!onOpen)}
-                className={`flex items-center gap-2 relative cursor-pointer p-2 rounded-md
+                className={`hidden lg:flex items-center gap-2 relative cursor-pointer p-2 rounded-md
                 ${onScroll && 'hover:bg-gray-200 text-gray-950'}
                 `}>
                 <h2>
@@ -32,11 +35,11 @@ const NavLinks = ({
                     <IoIosArrowDown />
                 )}
             </div>
-            {/* EXPLORE */}
+            {/* EXPLORE Button */}
             <div
                 onClick={() => setExploreOpen(!exploreOpen)}
-                className={`flex items-center gap-2 relative cursor-pointer p-2 rounded-md
-                ${onScroll && 'hover:bg-gray-200'}
+                className={`hidden lg:flex items-center gap-2 relative cursor-pointer p-2 rounded-md
+                ${onScroll && 'hover:bg-gray-200 text-gray-500'}
                 `}>
                 <h2>
                     Explore
@@ -48,26 +51,46 @@ const NavLinks = ({
                     <IoIosArrowDown />
                 )}
             </div>
-
-            <button>
+            <Link
+                to='/become-a-seller'
+                className={`hidden lg:block
+            ${onScroll
+                    && 'hover:text-orange-800 text-gray-500'}
+            `}>
                 Become a Seller
-            </button>
+            </Link>
+            <div className='hidden sm:block'>
+                <LoginModals
+                    title='Sign in'
+                    onScroll={onScroll}
+                />
+            </div>
 
-            <Modals 
-            title='Sign in'
-            />
+            {/* If no USER Trigger LoginModals */}
+            {currentUser ? (
+                <button className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer
+                ${onScroll && 'text-gray-500'}
+                `}>
+                    Join
+                </button>
+            ) : (
+                <div className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer
+                ${onScroll && 'text-gray-500'}
+                `}>
+                    <LoginModals
+                        title='Join'
+                    />
+                </div>
+            )}
 
-            <button className='border py-2 px-6 rounded-md'>
-                Join
-            </button>
 
 
-
-
-
-            {/* Fiverr Pro & Explore DropDown */}
+            {/* DROP-DOWN ===============> */}
+            {/* Fiverr Pro DropDown */}
             <section className={`absolute top-14 text-gray-800 font-light text-sm rounded-md bg-white p-4 w-[400px] flex flex-col gap-4
-            ${onOpen ? 'block' : 'hidden'}
+            ${onOpen
+                    ? 'block'
+                    : 'hidden'}
             `}>
                 <div className='border p-2 rounded-md flex items-center gap-4 hover:bg-gray-100 cursor-pointer'>
                     <Glasses
@@ -114,8 +137,6 @@ const NavLinks = ({
                     </div>
                 ))}
             </section>
-
-
         </div>
     )
 }
