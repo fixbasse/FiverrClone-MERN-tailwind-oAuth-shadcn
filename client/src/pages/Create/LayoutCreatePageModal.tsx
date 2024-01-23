@@ -1,5 +1,3 @@
-import React from 'react'
-
 const LayoutCreatePageModal = () => {
     return (
         <div className='pt-40 pb-20 flex flex-col items-center justify-center bg-gray-100'>

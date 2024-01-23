@@ -1,5 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const config = require('config');
+const jwt = require('jsonwebtoken');
 
 //* REGISTER
 const register = async (req, res) => {
@@ -12,6 +14,10 @@ const register = async (req, res) => {
         });
 
         await newUser.save();
+
+        const alreadyExitUser = await User.findOne({ email: req.body.email });
+        if (alreadyExitUser) return res.status(400).send({ message: 'This email is already taken.' });
+
         res.status(201).send('User has been created!');
     } catch (error) {
         res.status(500).send('Internal Error at Register');
@@ -27,8 +33,18 @@ const login = async (req, res) => {
         const pwdCompare = bcrypt.compareSync(req.body.password, user.password);
         if (!pwdCompare) return res.status(400).send('Wrong email or password!');
 
+        const token = jwt.sign({
+            id: user._id,
+            email: user.email
+        },
+            process.env.JWT_SECRET
+        );
+
         const { password, ...userInfo } = user._doc;
-        res.status(200).send(userInfo);
+        
+        res.cookie('accessToken', token, {
+            httpOnly: true,
+        }).status(200).send(userInfo);
     } catch (error) {
         res.status(500).send('Internal Error at Login')
     }

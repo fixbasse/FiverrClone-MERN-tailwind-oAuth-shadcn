@@ -4,7 +4,7 @@ import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHe
 
 const SHEET_SIDES = ["left"] as const
 
-type SheetSide = (typeof SHEET_SIDES)[number]
+// type SheetSide = (typeof SHEET_SIDES)[number]
 
 export function Sidebar() {
     return (

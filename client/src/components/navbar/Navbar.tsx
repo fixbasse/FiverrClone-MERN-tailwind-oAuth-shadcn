@@ -2,11 +2,11 @@
 import { useEffect, useState } from 'react'
 import LogoAndMenubar from './LogoAndMenubar'
 import NavLinks from './NavLinks'
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [onScroll, setOnScroll] = useState(false);
-    const location = useLocation();
+    //const location = useLocation();
 
     const isActive = () => {
         window.scrollY > 0 ? setOnScroll(true) : setOnScroll(false);

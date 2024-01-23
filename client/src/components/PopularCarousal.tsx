@@ -1,4 +1,4 @@
-import * as React from "react"
+
 
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -9,12 +9,12 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 
-const popularData = [
-    {
-        label: 'Website Development',
-        img: 'https://images.pexels.com/photos/461064/pexels-photo-461064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-    },
-]
+// const popularData = [
+//     {
+//         label: 'Website Development',
+//         img: 'https://images.pexels.com/photos/461064/pexels-photo-461064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+//     },
+// ]
 
 export function PopularCarousal() {
     return (

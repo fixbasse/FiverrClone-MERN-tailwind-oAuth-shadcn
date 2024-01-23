@@ -1,5 +1,4 @@
 import { Book, PictureInPicture2Icon, ShoppingBag } from 'lucide-react'
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 const OverviewSeller = () => {
@@ -69,8 +68,8 @@ const OverviewSeller = () => {
     <section className='md:flex-1 w-full'>
       <img
         src="https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        alt=""
         className='rounded-lg h-[300px] w-full object-cover'
+        alt=""
       />
 
     </section>

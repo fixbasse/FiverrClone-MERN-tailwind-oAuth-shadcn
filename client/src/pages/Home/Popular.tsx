@@ -1,7 +1,5 @@
-import { PopularCarousal } from '@/components/PopularCarousal'
+
 import { popularData } from '@/data/data'
-import React from 'react'
-import { Link } from 'react-router-dom'
 
 const Popular = () => {
     return (

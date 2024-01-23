@@ -1,9 +1,10 @@
 import { explore } from '@/data/data';
 import { Glasses, Pencil } from 'lucide-react';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { Modals } from '../modals/Modals';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 interface NavLinksProps {
     onScroll: boolean;
@@ -14,8 +15,28 @@ const NavLinks = ({
 }: NavLinksProps) => {
     const [onOpen, setOnOpen] = useState(false);
     const [exploreOpen, setExploreOpen] = useState(false);
+    const [currentUser, setCurrentUser] = useState({});
 
-    const currentUser = !true;
+    const getUser = async () => {
+        try {
+            const res = await axios.get('http://localhost:8000/login/success', {
+                withCredentials: true
+            });
+
+            //console.log(res.data);
+            setCurrentUser(res.data);
+        } catch (error) {
+            console.log('No user');
+
+        }
+    };
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    console.log(currentUser);
+
 
     return (
         <div className='font-semibold flex items-center gap-6'>
@@ -66,8 +87,10 @@ const NavLinks = ({
                 />
             </div>
 
+
+
             {/* If no USER Trigger LoginModals */}
-            {currentUser ? (
+            {/* {currentUser ? (
                 <button className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer max-[425px]:hidden
                 ${onScroll && 'text-gray-500'}
                 `}>
@@ -81,6 +104,22 @@ const NavLinks = ({
                         title='Join'
                     />
                 </div>
+            )} */}
+
+            {Object.keys(currentUser).length > 0 ? (
+                <>
+
+                </>
+            ) : (
+                <>
+                    <div className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer max-[425px]:hidden
+                ${onScroll && 'text-gray-500'}
+                `}>
+                        <Modals
+                            title='Join'
+                        />
+                    </div>
+                </>
             )}
 
 

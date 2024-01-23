@@ -1,5 +1,4 @@
 import { Database, FileDigitIcon, GitGraphIcon, ImageDownIcon, Languages, Music, TabletSmartphoneIcon, Video } from 'lucide-react'
-import React from 'react'
 import { FcBusiness } from 'react-icons/fc'
 import { Link } from 'react-router-dom';
 

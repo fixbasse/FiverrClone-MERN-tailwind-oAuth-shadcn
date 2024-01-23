@@ -3,7 +3,7 @@ import {
     DialogContent,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { ArrowLeft, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useCallback, useState } from "react";
 
 import { FcGoogle } from "react-icons/fc";
@@ -30,6 +30,11 @@ export function Modals({
 
         setLogin(false);
     }, [register, login]);
+
+    //* WITH GOOGLE
+    const loginWithGoogle = () => {
+        window.open('http://localhost:8000/auth/google/callback', '_self')
+    };
 
 
     return (
@@ -76,6 +81,7 @@ export function Modals({
                     <section className="flex flex-col gap-2 py-8">
                         {/* Google Login BUTTON */}
                         <div
+                        onClick={loginWithGoogle}
                             className="border rounded-md p-2 flex items-center justify-center relative hover:bg-gray-50 cursor-pointer">
                             <div className="absolute left-4">
                                 <FcGoogle size={20} />
