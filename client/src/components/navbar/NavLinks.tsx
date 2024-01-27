@@ -1,8 +1,8 @@
 import { explore } from '@/data/data';
 import { Glasses, Pencil } from 'lucide-react';
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import { Modals } from '../modals/Modals';
+import { Modals } from '../modals/Login&Register/Modals';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -15,7 +15,8 @@ const NavLinks = ({
 }: NavLinksProps) => {
     const [onOpen, setOnOpen] = useState(false);
     const [exploreOpen, setExploreOpen] = useState(false);
-    const [currentUser, setCurrentUser] = useState({});
+
+    const [currentUser, setCurrentUser] = useState([]);
 
     const getUser = async () => {
         try {
@@ -106,9 +107,8 @@ const NavLinks = ({
                 </div>
             )} */}
 
-            {Object.keys(currentUser).length > 0 ? (
+            {Object?.keys(currentUser)?.length > 0 ? (
                 <>
-
                 </>
             ) : (
                 <>
@@ -121,7 +121,6 @@ const NavLinks = ({
                     </div>
                 </>
             )}
-
 
 
             {/* DROP-DOWN ===============> */}

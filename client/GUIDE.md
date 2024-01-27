@@ -1,5 +1,3 @@
-<!-- oAuth redirect -->
-https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
 
 <!-- Authorized JavaScript origins -->
 http://localhost:5173
@@ -7,9 +5,6 @@ http://localhost
 
 
 <!--  oAuth Erorr -->
--copy the redirect_uri 
-<!-- http://localhost:8000/auth/google/callback
- -->
  check for typo (env, ',')
 
 <!--* GOOGLE oAuth -->
@@ -39,3 +34,5 @@ user = new userDb({
 Gig - Category: [
   subCategory:
 ] = 2 filters
+
+<!-- Add otp Auth -->

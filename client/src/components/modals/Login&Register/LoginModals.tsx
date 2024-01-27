@@ -1,7 +1,8 @@
 
+import authContext, { AuthContext } from '@/context/auth/AuthContext';
 import { newRequest } from '@/lib/newRequest';
 import { ArrowLeft } from 'lucide-react'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
@@ -28,6 +29,8 @@ const LoginModals = ({
         handleSubmit
     } = useForm<AuthInput>();
 
+
+
     //* LOGIN 
     const onSubmit: SubmitHandler<AuthInput> = async (value) => {
         console.log(value);
@@ -37,6 +40,7 @@ const LoginModals = ({
             const res = await newRequest.post('/auth/login', value);
 
             console.log(res.data);
+
             toast.success('Login success!');
             setTimeout(() => {
                 window.location.replace('/');

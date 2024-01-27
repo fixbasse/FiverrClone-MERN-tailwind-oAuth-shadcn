@@ -1,10 +1,10 @@
-import LayoutCreatePageModal from './LayoutCreatePageModal'
+import CreatePageModal from '@/components/modals/CreatePage/CreatePageModal'
 
 const CreatePage = () => {
     return (
-        <div>
-            <LayoutCreatePageModal />
-        </div>
+        <>
+            <CreatePageModal />
+        </>
     )
 }
 

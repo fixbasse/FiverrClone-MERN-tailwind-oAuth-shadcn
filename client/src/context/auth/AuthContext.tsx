@@ -1,33 +1,79 @@
+import { createContext, useCallback, useEffect, useReducer } from "react";
+import authReducer, { AuthState, defaultAuthState } from "./Reducer";
+import { AuthActionEnum } from "./Action";
+import { useNavigate } from "react-router-dom";
 
-// const INITIAL_STATE = {
-//     currentUser: JSON.parse(localStorage.getItem('currentUser'))
-// }
-
-import { ReactNode, createContext, useEffect, useReducer } from "react"
-import Reducer from "./Reducer";
-
-interface Props {
-    children?: ReactNode;
+type AuthProviderProps = {
+    children: JSX.Element | JSX.Element[];
 };
 
-type IAuthContext = {
-    currentUser: string | null;
-    isFetching: boolean;
-    error: boolean;
+export type UserData = {
+    authToken: string;
+    userId: string;
+    email: string;
+    password: string;
 };
 
-const INITIAL_STATE = {
-    currentUser: JSON.parse(localStorage.getItem('currentUser') || '{}'),
-    isFetching: false,
-    error: false,
+export interface AuthContext {
+    authState: AuthState;
+    globalLogInDispatch: (props: UserData) => void;
+    globalLogOutDispatch: () => void;
 };
 
-export const AuthContext = createContext<IAuthContext>(INITIAL_STATE);
+const authContext = createContext<AuthContext>({
+    authState: defaultAuthState,
+    globalLogInDispatch: () => { },
+    globalLogOutDispatch: () => { },
+});
 
-// export const AuthContextProvider = ({ children }: Props) => {
-//     const [state, dispatch] = useReducer(Reducer, INITIAL_STATE)
+export const AuthContextProvider = (props: AuthProviderProps) => {
+    const { children } = props;
+    const [authState, dispatch] = useReducer(authReducer, defaultAuthState);
+    const navigate = useNavigate();
 
-//     useEffect(() => {
-//         localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
-//     },)
-// }
+    useEffect(() => {
+        const user = localStorage.getItem('user');
+        if (user) {
+            const userData: UserData = JSON.parse(user);
+            dispatch({ type: AuthActionEnum.LOG_IN, payload: userData });
+        }
+    }, []);
+
+    const globalLogInDispatch = useCallback(
+        (props: UserData) => {
+            const { authToken, email, password, userId } = props;
+            dispatch({
+                type: AuthActionEnum.LOG_IN,
+                payload: {
+                    authToken,
+                    userId,
+                    email,
+                    password,
+                },
+            });
+            navigate('/become-a-seller/overview');
+        }, [navigate]);
+
+    const globalLogOutDispatch = useCallback(() => {
+        dispatch({ type: AuthActionEnum.LOG_OUT, payload: null });
+        navigate('/')
+    }, [navigate]);
+
+
+    const ctx = {
+        authState,
+        globalLogInDispatch,
+        globalLogOutDispatch,
+    };
+
+    return (
+        <authContext.Provider
+            value={ctx}
+        >
+            {children}
+        </authContext.Provider>
+
+    )
+};
+
+export default authContext;
