@@ -1,6 +1,12 @@
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
+interface DescriptionProps {
+    register: UseFormRegister<FieldValues>;
+}
 
-const DescriptionStep = () => {
+const DescriptionStep = ({
+    register
+}: DescriptionProps) => {
     return (
         <>
             <section>
@@ -17,6 +23,7 @@ const DescriptionStep = () => {
 
                     <textarea
                         className='outline-none focus:ring-0 font-light h-[200px] p-4  md:w-[800px] border rounded-md'
+                        {...register('description')}
                     />
                 </div>
             </section>
@@ -38,6 +45,7 @@ const DescriptionStep = () => {
                         type='text'
                         placeholder='Add a question: i.e. Do you translate to English as well?'
                         className='outline-gray-900 focus:ring-0 font-light h-[50px] p-4 md:w-[800px] border rounded-md'
+                        {...register('question')}
                     />
                 </div>
             </section>

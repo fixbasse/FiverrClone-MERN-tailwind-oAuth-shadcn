@@ -108,3 +108,39 @@ body {
 textarea {
   resize: none;
 }
+
+/** <--------------------- BUTTON Loading ANIMATION =  */
+.loadingAnimate {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  animation: load 0.8s ease infinite;
+}
+
+.loadingAnimate.one {
+  animation-delay: 0.1s;
+}
+
+.loadingAnimate.two {
+  animation-delay: 0.2s;
+}
+
+.loadingAnimate.three {
+  animation-delay: 0.3s;
+}
+
+.loadingAnimate.four {
+  animation-delay: 0.4s;
+}
+
+@keyframes load {
+  0% {
+    height: 7px;
+    width: 7px;
+  }
+
+  50% {
+    height: 7px;
+    width: 7px;
+  }
+}

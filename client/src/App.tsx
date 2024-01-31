@@ -8,12 +8,13 @@ import CreatePage from "./pages/Create/CreatePage"
 import ShowProductPage from "./pages/ShowProduct/ShowProductPage"
 import { useContext } from "react"
 import { AuthContext } from "./context/auth/AuthContext"
+import PrivateRoute from "./PrivateRoute"
 
 function App() {
   const { isLoading } = useContext(AuthContext);
   return (
     <div
-      className={isLoading ? 'opacity-90' : undefined}
+      className={isLoading ? 'opacity-50' : undefined}
     >
       <Navbar />
 
@@ -23,7 +24,11 @@ function App() {
         <Route path="/show-product" element={<ShowProductPage />} />
         <Route path="/become-a-seller/overview" element={<SellerPage />} />
         <Route path="/become-a-seller/seller_info" element={<InfoSeller />} />
-        <Route path="/create" element={<CreatePage />} />
+
+        <Route element={<PrivateRoute />}>
+          <Route path="/create" element={<CreatePage />} />
+        </Route>
+
       </Routes>
     </div>
   )

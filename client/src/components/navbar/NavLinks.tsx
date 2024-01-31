@@ -18,7 +18,7 @@ const NavLinks = ({
 }: NavLinksProps) => {
     const [onOpen, setOnOpen] = useState(false);
     const [exploreOpen, setExploreOpen] = useState(false);
-    const { user, setUser } = useContext(AuthContext);
+    const { user, setUser, setIsLoading } = useContext(AuthContext);
 
 
     useEffect(() => {
@@ -39,6 +39,14 @@ const NavLinks = ({
 
     //console.log(currentUser);
     console.log(user);
+
+    const becomeSellerLink = () => {
+        setIsLoading(true);
+
+        setTimeout(() => {
+            window.location.replace('/become-a-seller/overview');
+        }, 1000);
+    }
 
 
     return (
@@ -76,14 +84,22 @@ const NavLinks = ({
                 )}
             </div>
 
-            <Link
-                to='/become-a-seller/overview'
-                className={`hidden lg:block
-            ${onScroll
-                    && 'hover:text-orange-800 text-gray-500'}
-            `}>
-                Become a Seller
-            </Link>
+            {user ? (
+                <button
+                    onClick={becomeSellerLink}
+                    //to='/become-a-seller/overview'
+                    className={`hidden lg:block
+        ${onScroll
+                        && 'hover:text-orange-800 text-gray-500'}
+        `}>
+                    Become a Seller
+                </button>
+            ) : (
+                <Modals
+                    title='Become a Seller'
+                    onScroll={onScroll}
+                />
+            )}
 
             <div className={user ? 'hidden' : 'hidden sm:block'}>
                 <Modals

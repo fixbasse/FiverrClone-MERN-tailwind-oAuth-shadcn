@@ -1,4 +1,12 @@
-const PricingStep = () => {
+import { FieldValues, UseFormRegister } from "react-hook-form"
+
+interface PricingProps {
+    register: UseFormRegister<FieldValues>
+};
+
+const PricingStep = ({
+    register
+}: PricingProps) => {
     return (
         <div>
             <h1 className='text-3xl pb-4'>
@@ -30,6 +38,7 @@ const PricingStep = () => {
                                 <textarea
                                     placeholder='Name your package'
                                     className='outline-none focus:ring-0 font-light text-sm h-[100px] p-2'
+                                    {...register('packageName')}
                                 />
                             </th>
                         </tr>
@@ -41,6 +50,7 @@ const PricingStep = () => {
                                 <textarea
                                     placeholder='Describe the details of your offering'
                                     className='outline-none focus:ring-0 font-light text-sm h-[100px] p-2'
+                                    {...register('offering')}
                                 />
                             </th>
                         </tr>
@@ -49,14 +59,16 @@ const PricingStep = () => {
                                 Functional websites
                             </th>
                             <th className='border'>
-                                <select>
+                                <select
+                                    {...register('delivery')}
+                                >
                                     <option value="">
                                         DELIVERY TIME
                                     </option>
-                                    <option value="">1 DAY DELIVERY</option>
-                                    <option value="">2 DAYS DELIVERY</option>
-                                    <option value="">3 DAYS DELIVERY</option>
-                                    <option value="">4 DAYS DELIVERY</option>
+                                    <option value={1}>1 DAY DELIVERY</option>
+                                    <option value={2}>2 DAYS DELIVERY</option>
+                                    <option value={3}>3 DAYS DELIVERY</option>
+                                    <option value={4}>4 DAYS DELIVERY</option>
                                 </select>
                             </th>
                         </tr>
@@ -65,14 +77,16 @@ const PricingStep = () => {
                                 Number of pages
                             </th>
                             <th className='border'>
-                                <select className=" outline-none focus:ring-0">
-                                    <option value="">
+                                <select
+                                    {...register('pages')}
+                                    className=" outline-none focus:ring-0">
+                                    <option value={1}>
                                         1
                                     </option>
-                                    <option value="">2</option>
-                                    <option value="">3 </option>
-                                    <option value="">4</option>
-                                    <option value="">5</option>
+                                    <option value={2}>2</option>
+                                    <option value={3}>3 </option>
+                                    <option value={4}>4</option>
+                                    <option value={5}>5</option>
                                 </select>
                             </th>
                         </tr>
@@ -85,6 +99,7 @@ const PricingStep = () => {
                                     type="number"
                                     placeholder="$"
                                     className="outline-none focus:ring-0 w-24 font-light placeholder:text-gray-950"
+                                    {...register('price')}
                                 />
                             </th>
                         </tr>

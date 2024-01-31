@@ -14,6 +14,7 @@ const userDb = require('./models/user');
 
 const authRoute = require('./routes/auth.route');
 const userRoute = require('./routes/user.route');
+const gigRoute = require('./routes/gig.route');
 
 dotenv.config();
 
@@ -37,6 +38,7 @@ mongoose.connect(process.env.MONGO_URL)
 //* ROUTE
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
+app.use('/api/gig', gigRoute);
 
 // Setup session
 app.use(session({
@@ -103,7 +105,7 @@ app.get('/api/auth/login', async (req, res) => {
     //console.log('', req.user);
 
     if (req.user) {
-       // res.status(200).json({ message: 'User logged in', user: req.user });
+        // res.status(200).json({ message: 'User logged in', user: req.user });
         res.status(200).json(req.user);
     } else {
         res.status(400).json({ message: 'Not authorized!' });

@@ -1,6 +1,22 @@
 import React from 'react'
+import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-const OverviewStep = () => {
+export const categoriesValue = [
+    {
+        label: 'Graphic & Design'
+    },
+    {
+        label: 'Graphic & Design'
+    },
+]
+
+interface OverviewProps {
+    register: UseFormRegister<FieldValues>
+}
+
+const OverviewStep = ({
+    register
+}: OverviewProps) => {
     return (
         <>
             <section className='grid md:grid-cols-3 gap-2'>
@@ -13,6 +29,7 @@ const OverviewStep = () => {
                     <textarea
                         placeholder="I will do something I'm very good at"
                         className='border border-gray-400 p-4 h-[100px] rounded-md outline-none focus:ring-0 w-full'
+                        {...register('title')}
                     />
                 </div>
             </section>
@@ -25,30 +42,31 @@ const OverviewStep = () => {
                     </h3>
                 </div>
 
+                {/* SELECT */}
                 <div className='flex justify-between col-span-2 gap-4'>
                     <select
+                        {...register('category')}
                         className='border border-gray-400 p-3 w-full rounded-sm outline-none focus:ring-0'
                     >
                         <option value=''>SELECT A CATEGORY</option>
                         <option value='graphic'>Graphic & design</option>
-                        <option>MUSIC & AUDIO</option>
-                        <option>PROGRAMMING & TECH</option>
+                        <option value='music'>MUSIC & AUDIO</option>
+                        <option value='programming'>PROGRAMMING & TECH</option>
                     </select>
-                    <select
-
+                    {/* <select
                         className='border border-gray-400 p-3 w-full rounded-sm outline-none focus:ring-0'
                     >
                         <option>SELECT A SUB CATEGORY</option>
                         <option>WEBSITE DEVELOPMENT</option>
                         <option>MUSIC & AUDIO</option>
                         <option>PROGRAMMING & TECH</option>
-                    </select>
+                    </select> */}
                 </div>
             </section>
 
             {/* TAG */}
             <section className='grid md:grid-cols-3 gap-2'>
-                <div className=' col-span-1'>
+                <div className='col-span-1'>
                     <h3 className='font-semibold text-xl'>
                         Search tags
                     </h3>
@@ -65,6 +83,7 @@ const OverviewStep = () => {
                     <input
                         type="text"
                         className='border rounded-sm border-gray-400 w-full outline-none focus:ring-0 p-3'
+                        {...register('keyword')}
                     />
                 </div>
             </section>

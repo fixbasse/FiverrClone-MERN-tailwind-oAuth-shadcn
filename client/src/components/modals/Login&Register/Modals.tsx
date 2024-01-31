@@ -11,6 +11,7 @@ import ModalsHeader from "./ModalsHeader";
 import RegisterModals from "./RegisterModals";
 import LoginModals from "./LoginModals";
 import { AuthContext } from "@/context/auth/AuthContext";
+import toast from "react-hot-toast";
 
 interface ModalsProps {
     title: string;
@@ -23,7 +24,7 @@ export function Modals({
 }: ModalsProps) {
     const [register, setRegister] = useState(false);
     const [login, setLogin] = useState(false);
-    const { isLoading } = useContext(AuthContext);
+    const { isLoading, setIsLoading } = useContext(AuthContext);
 
     const onBack = useCallback(() => {
         if (register) {
@@ -35,7 +36,9 @@ export function Modals({
 
     //* WITH GOOGLE
     const loginWithGoogle = () => {
-        window.open('http://localhost:8000/auth/google/callback');
+        setIsLoading(true);
+        toast.success('Login success!');
+        window.open('http://localhost:8000/auth/google/callback', '_self');
     };
 
 

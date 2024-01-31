@@ -1,10 +1,14 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import LayoutCreatePageModal from './LayoutCreatePageModal'
-import OverviewStep from './OverviewStep';
+import OverviewStep, { categoriesValue } from './OverviewStep';
 import PricingStep from './PricingStep';
 import DescriptionStep from './DescriptionStep';
 import ImageUpload from './ImageUpload';
 import SuccessStep from './SuccessStep';
+import { SubmitHandler, useForm, FieldValues } from 'react-hook-form';
+import { AuthContext } from '@/context/auth/AuthContext';
+import toast from 'react-hot-toast';
+import { newRequest } from '@/lib/newRequest';
 
 enum STEPS {
     OVERVIEW = 0,
@@ -12,11 +16,15 @@ enum STEPS {
     DESCRIPTION = 2,
     IMAGE = 3,
     PUBLISH = 4,
-}
+};
 
 const CreatePageModal = () => {
     const [steps, setSteps] = useState(STEPS.OVERVIEW);
-    const [isLoading, setIsLoading] = useState(false);
+    const { isLoading, setIsLoading } = useContext(AuthContext);
+    const {
+        register,
+        handleSubmit
+    } = useForm();
 
     const onNext = () => {
         setSteps((value) => value + 1);
@@ -26,14 +34,29 @@ const CreatePageModal = () => {
         setSteps((value) => value - 1);
     };
 
-    const onSubmit = () => {
-        if (steps === STEPS.PUBLISH) {
-            return;
+    //* Submit & Next  
+    const onSubmit: SubmitHandler<FieldValues> = async (value) => {
+        if (steps !== STEPS.PUBLISH) {
+            return onNext();
         };
 
-        onNext();
+        console.log(value);
+        setIsLoading(true);
+    
+
+        try {
+            const res = await newRequest.post('/gig', value);
+            console.log(res.data);
+
+            window.location.replace('/')
+            toast.success('Gig has been create.');
+        } catch (error) {
+            toast.error('Something went wrong, pleas try again.');
+            console.log(error);
+        }
     };
 
+    //* Back 
     const handleBack = useCallback(() => {
         if (steps === STEPS.OVERVIEW) {
             return null;
@@ -44,20 +67,28 @@ const CreatePageModal = () => {
 
 
     let bodyContent = (
-        <OverviewStep />
+        <>
+            <OverviewStep
+                register={register}
+            />
+        </>
     );
 
     //* 2nd STEPS PRICING
     if (steps === STEPS.PRICING) {
         bodyContent = (
-            <PricingStep />
+            <PricingStep
+                register={register}
+            />
         )
     };
 
     //* 3rd STEPS DESCRIPTION 
     if (steps === STEPS.DESCRIPTION) {
         bodyContent = (
-            <DescriptionStep />
+            <DescriptionStep
+                register={register}
+            />
         )
     };
 
@@ -78,11 +109,11 @@ const CreatePageModal = () => {
     return (
         <LayoutCreatePageModal
             body={bodyContent}
-            submitButton={onSubmit}
+            submitButton={handleSubmit(onSubmit)}
             backButton={handleBack}
             disabled={isLoading}
             label={steps === STEPS.PUBLISH ? 'Publish' : 'Save & Continue'}
-            subLabel={steps === STEPS.OVERVIEW ? '': 'Back'}
+            subLabel={steps === STEPS.OVERVIEW ? '' : 'Back'}
         />
     );
 };

@@ -1,6 +1,12 @@
 Completed this first
--Auth
+-Auth 
 -Create gig
+
+<!-- * NOW -->
+-Create Gig - POST
+-Display all gig - GET
+-Display Single Gig - GET BY ID
+-Diplay orders when someone purchase
 
 <!-- Auth -->
 -context API
@@ -18,6 +24,10 @@ User
 Gig
 - Gig Data
 - Filter
+
+Orders
+- Order Data
+- Notified order to seller
 
 <!-- Modals -->
 -Select 
