@@ -4,39 +4,41 @@ import { useContext, useEffect, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { Modals } from '../modals/Login&Register/Modals';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { newRequest } from '@/lib/newRequest';
+import { AuthContext } from '@/context/auth/AuthContext';
+import { UserMenuDropdown } from '../dropdowns/UserMenuDropdown';
 
 interface NavLinksProps {
     onScroll: boolean;
 };
 
 const NavLinks = ({
-    onScroll
+    onScroll,
+
 }: NavLinksProps) => {
     const [onOpen, setOnOpen] = useState(false);
     const [exploreOpen, setExploreOpen] = useState(false);
+    const { user, setUser } = useContext(AuthContext);
 
-    const [currentUser, setCurrentUser] = useState([]);
-
-    const getUser = async () => {
-        try {
-            const res = await axios.get('http://localhost:8000/login/success', {
-                withCredentials: true
-            });
-
-            //console.log(res.data);
-            setCurrentUser(res.data);
-        } catch (error) {
-            console.log('No user');
-
-        }
-    };
 
     useEffect(() => {
+        const getUser = async () => {
+            try {
+                const res = await newRequest.get('/auth/login');
+
+                //console.log(res.data);
+                //setCurrentUser(res.data);
+                setUser(res.data);
+            } catch (error) {
+                console.log('No user');
+            }
+        };
+
         getUser();
     }, []);
 
-    console.log(currentUser);
+    //console.log(currentUser);
+    console.log(user);
 
 
     return (
@@ -73,6 +75,7 @@ const NavLinks = ({
                     <IoIosArrowDown />
                 )}
             </div>
+
             <Link
                 to='/become-a-seller/overview'
                 className={`hidden lg:block
@@ -81,46 +84,21 @@ const NavLinks = ({
             `}>
                 Become a Seller
             </Link>
-            <div className='hidden sm:block'>
+
+            <div className={user ? 'hidden' : 'hidden sm:block'}>
                 <Modals
                     title='Sign in'
                     onScroll={onScroll}
                 />
             </div>
 
+            {/* USER Image & Menu */}
+            <div className={user ? 'block' : 'hidden'}>
+                <UserMenuDropdown
+                    user={user}
+                />
+            </div>
 
-
-            {/* If no USER Trigger LoginModals */}
-            {/* {currentUser ? (
-                <button className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer max-[425px]:hidden
-                ${onScroll && 'text-gray-500'}
-                `}>
-                    Join
-                </button>
-            ) : (
-                <div className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer max-[425px]:hidden
-                ${onScroll && 'text-gray-500'}
-                `}>
-                    <Modals
-                        title='Join'
-                    />
-                </div>
-            )} */}
-
-            {Object?.keys(currentUser)?.length > 0 ? (
-                <>
-                </>
-            ) : (
-                <>
-                    <div className={`border py-2 px-6 rounded-md hover:bg-orange-800 hover:text-white cursor-pointer max-[425px]:hidden
-                ${onScroll && 'text-gray-500'}
-                `}>
-                        <Modals
-                            title='Join'
-                        />
-                    </div>
-                </>
-            )}
 
 
             {/* DROP-DOWN ===============> */}

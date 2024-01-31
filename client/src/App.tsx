@@ -4,18 +4,23 @@ import CategoryPage from "./pages/Category/CategoryPage"
 import SellerPage from "./pages/BecomeASeller/SellerPage"
 import InfoSeller from "./pages/BecomeASeller/InfoSellerPage"
 import Navbar from "./components/navbar/Navbar"
-import LoadingScreen from "./components/LoadingScreen"
 import CreatePage from "./pages/Create/CreatePage"
+import ShowProductPage from "./pages/ShowProduct/ShowProductPage"
+import { useContext } from "react"
+import { AuthContext } from "./context/auth/AuthContext"
 
 function App() {
+  const { isLoading } = useContext(AuthContext);
   return (
-    <div>
+    <div
+      className={isLoading ? 'opacity-90' : undefined}
+    >
       <Navbar />
-      <LoadingScreen />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/categories" element={<CategoryPage />} />
+        <Route path="/show-product" element={<ShowProductPage />} />
         <Route path="/become-a-seller/overview" element={<SellerPage />} />
         <Route path="/become-a-seller/seller_info" element={<InfoSeller />} />
         <Route path="/create" element={<CreatePage />} />

@@ -99,11 +99,12 @@ app.get('/auth/google/callback', passport.authenticate('google', {
     failureRedirect: 'http://localhost:5173'
 }));
 
-app.get('/login/success', async (req, res) => {
+app.get('/api/auth/login', async (req, res) => {
     //console.log('', req.user);
 
     if (req.user) {
-        res.status(200).json({ message: 'User logged in', user: req.user });
+       // res.status(200).json({ message: 'User logged in', user: req.user });
+        res.status(200).json(req.user);
     } else {
         res.status(400).json({ message: 'Not authorized!' });
     };

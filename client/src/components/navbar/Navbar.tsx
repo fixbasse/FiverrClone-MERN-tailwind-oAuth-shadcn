@@ -16,7 +16,7 @@ const Navbar = () => {
         window.addEventListener('scroll', isActive);
         
         return () => {
-            window.addEventListener('scroll', isActive);
+            window.removeEventListener('scroll', isActive);
         };
     }, [isActive]);
 

@@ -36,3 +36,8 @@ Gig - Category: [
 ] = 2 filters
 
 <!-- Add otp Auth -->
+
+
+
+<!-- Dropdown -->
+delete zoom-in at content

@@ -5,7 +5,7 @@ import HomeCategory from './HomeCategory'
 import Popular from './Popular'
 import Talent from './Talent'
 
-
+//* PAGE 
 const HomePage = () => {
   return (
     <>

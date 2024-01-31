@@ -1,79 +1,65 @@
-import { createContext, useCallback, useEffect, useReducer } from "react";
-import authReducer, { AuthState, defaultAuthState } from "./Reducer";
-import { AuthActionEnum } from "./Action";
-import { useNavigate } from "react-router-dom";
+import { ReactNode, createContext, useState } from "react";
+import jwt_decode from 'jwt-decode';
 
-type AuthProviderProps = {
-    children: JSX.Element | JSX.Element[];
+type AccessTokensType = {
+  access: string | undefined;
+  refresh: string | undefined;
 };
 
-export type UserData = {
-    authToken: string;
-    userId: string;
-    email: string;
-    password: string;
+export type User = {
+  username: string;
+  email: string;
+  userImg: string;
+  isSeller: boolean;
 };
 
-export interface AuthContext {
-    authState: AuthState;
-    globalLogInDispatch: (props: UserData) => void;
-    globalLogOutDispatch: () => void;
+interface CurrentUserContextType {
+  // authTokens: AccessTokensType;
+  // setAuthTokens: React.Dispatch<React.SetStateAction<AccessTokensType>>;
+  user: User | undefined;
+  setUser: React.Dispatch<React.SetStateAction<string | undefined>>;
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  callLogOut: () => void;
+}
+
+export const AuthContext = createContext<CurrentUserContextType>(
+  {} as CurrentUserContextType
+);
+
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  // const [authTokens, setAuthTokens] = useState<AccessTokensType>(() =>
+  //   localStorage.getItem('authTokens')
+  //     ? JSON.parse(localStorage.getItem('authTokens') || '')
+  //     : undefined
+  // );
+
+  const [user, setUser] = useState<string | undefined>(() =>
+    localStorage.getItem('currentUser')
+      ? JSON.parse(localStorage.getItem('currentUser') || '')
+      : undefined
+  );
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const callLogOut = () => {
+    setUser(undefined);
+    localStorage.removeItem('currentUser');
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser,
+        isLoading,
+        setIsLoading,
+        callLogOut
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  )
 };
 
-const authContext = createContext<AuthContext>({
-    authState: defaultAuthState,
-    globalLogInDispatch: () => { },
-    globalLogOutDispatch: () => { },
-});
-
-export const AuthContextProvider = (props: AuthProviderProps) => {
-    const { children } = props;
-    const [authState, dispatch] = useReducer(authReducer, defaultAuthState);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const user = localStorage.getItem('user');
-        if (user) {
-            const userData: UserData = JSON.parse(user);
-            dispatch({ type: AuthActionEnum.LOG_IN, payload: userData });
-        }
-    }, []);
-
-    const globalLogInDispatch = useCallback(
-        (props: UserData) => {
-            const { authToken, email, password, userId } = props;
-            dispatch({
-                type: AuthActionEnum.LOG_IN,
-                payload: {
-                    authToken,
-                    userId,
-                    email,
-                    password,
-                },
-            });
-            navigate('/become-a-seller/overview');
-        }, [navigate]);
-
-    const globalLogOutDispatch = useCallback(() => {
-        dispatch({ type: AuthActionEnum.LOG_OUT, payload: null });
-        navigate('/')
-    }, [navigate]);
-
-
-    const ctx = {
-        authState,
-        globalLogInDispatch,
-        globalLogOutDispatch,
-    };
-
-    return (
-        <authContext.Provider
-            value={ctx}
-        >
-            {children}
-        </authContext.Provider>
-
-    )
-};
-
-export default authContext;
+export default AuthProvider;

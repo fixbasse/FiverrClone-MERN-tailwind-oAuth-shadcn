@@ -4,12 +4,13 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Mail } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 
 import { FcGoogle } from "react-icons/fc";
 import ModalsHeader from "./ModalsHeader";
 import RegisterModals from "./RegisterModals";
 import LoginModals from "./LoginModals";
+import { AuthContext } from "@/context/auth/AuthContext";
 
 interface ModalsProps {
     title: string;
@@ -22,6 +23,7 @@ export function Modals({
 }: ModalsProps) {
     const [register, setRegister] = useState(false);
     const [login, setLogin] = useState(false);
+    const { isLoading } = useContext(AuthContext);
 
     const onBack = useCallback(() => {
         if (register) {
@@ -33,7 +35,7 @@ export function Modals({
 
     //* WITH GOOGLE
     const loginWithGoogle = () => {
-        window.open('http://localhost:8000/auth/google/callback', '_self')
+        window.open('http://localhost:8000/auth/google/callback');
     };
 
 
@@ -48,7 +50,7 @@ export function Modals({
             </DialogTrigger>
 
 
-            <DialogContent className="grid md:grid-cols-2 p-0 max-[640px]:w-full min-h-[500px] max-[640px]:h-full max-[768px]:w-[400px] max-[1024px]:w-[800px] rounded-md">
+            <DialogContent className={isLoading ? 'hidden' : 'grid md:grid-cols-2 p-0 max-[640px]:w-full min-h-[500px] max-[640px]:h-full max-[768px]:w-[400px] max-[1024px]:w-[800px] rounded-md'}>
                 {/* LEFT MODAL ===========> */}
                 <section className="hidden md:block bg-orange-900 p-8 rounded-l-md text-white">
                     <ModalsHeader />
@@ -81,7 +83,7 @@ export function Modals({
                     <section className="flex flex-col gap-2 py-8">
                         {/* Google Login BUTTON */}
                         <div
-                        onClick={loginWithGoogle}
+                            onClick={loginWithGoogle}
                             className="border rounded-md p-2 flex items-center justify-center relative hover:bg-gray-50 cursor-pointer">
                             <div className="absolute left-4">
                                 <FcGoogle size={20} />

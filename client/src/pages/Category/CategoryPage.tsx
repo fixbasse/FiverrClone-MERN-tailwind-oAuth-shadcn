@@ -4,6 +4,7 @@ import { categoriesInfo } from '@/data/data'
 import { AccordionCategories } from '@/components/CategoriesAccordion'
 import Navbar from '@/components/navbar/Navbar'
 
+//* PAGE 
 const CategoryPage = () => {
   return (
     <>

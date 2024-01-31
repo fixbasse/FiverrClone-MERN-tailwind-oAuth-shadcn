@@ -41,14 +41,27 @@ const login = async (req, res) => {
         );
 
         const { password, ...userInfo } = user._doc;
-        
+
         res.cookie('accessToken', token, {
             httpOnly: true,
         }).status(200).send(userInfo);
     } catch (error) {
         res.status(500).send('Internal Error at Login')
     }
+};
+
+//* LOGOUT 
+const logout = async (req, res) => {
+    req.session.destroy(() => {
+        req.logout();
+    })
+    res.clearCookie('connect.sid')
+
+    res.clearCookie('accessToken', {
+        sameSite: 'none',
+        secure: true,
+    }).status(200).send('User has been log out.')
 }
 
 
-module.exports = { register, login }
+module.exports = { register, login, logout }

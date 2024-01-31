@@ -3,23 +3,44 @@ import LayoutCreatePageModal from './LayoutCreatePageModal'
 import OverviewStep from './OverviewStep';
 import PricingStep from './PricingStep';
 import DescriptionStep from './DescriptionStep';
+import ImageUpload from './ImageUpload';
+import SuccessStep from './SuccessStep';
 
 enum STEPS {
     OVERVIEW = 0,
     PRICING = 1,
     DESCRIPTION = 2,
-    REQUIREMENT = 3,
-    GALLERY = 4,
-    PUBLISH = 5,
+    IMAGE = 3,
+    PUBLISH = 4,
 }
 
 const CreatePageModal = () => {
     const [steps, setSteps] = useState(STEPS.OVERVIEW);
+    const [isLoading, setIsLoading] = useState(false);
 
     const onNext = () => {
         setSteps((value) => value + 1);
     };
 
+    const onBack = () => {
+        setSteps((value) => value - 1);
+    };
+
+    const onSubmit = () => {
+        if (steps === STEPS.PUBLISH) {
+            return;
+        };
+
+        onNext();
+    };
+
+    const handleBack = useCallback(() => {
+        if (steps === STEPS.OVERVIEW) {
+            return null;
+        }
+
+        onBack();
+    }, [onBack]);
 
 
     let bodyContent = (
@@ -40,10 +61,28 @@ const CreatePageModal = () => {
         )
     };
 
+    //* 4 STEPS IMAGE
+    if (steps === STEPS.IMAGE) {
+        bodyContent = (
+            <ImageUpload />
+        )
+    }
+
+    //* 5 PUBLISH
+    if (steps === STEPS.PUBLISH) {
+        bodyContent = (
+            <SuccessStep />
+        )
+    }
+
     return (
         <LayoutCreatePageModal
             body={bodyContent}
-            submitButton={onNext}
+            submitButton={onSubmit}
+            backButton={handleBack}
+            disabled={isLoading}
+            label={steps === STEPS.PUBLISH ? 'Publish' : 'Save & Continue'}
+            subLabel={steps === STEPS.OVERVIEW ? '': 'Back'}
         />
     );
 };

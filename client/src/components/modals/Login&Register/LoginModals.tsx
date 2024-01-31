@@ -1,8 +1,8 @@
 
-import authContext, { AuthContext } from '@/context/auth/AuthContext';
+import { AuthContext } from '@/context/auth/AuthContext';
 import { newRequest } from '@/lib/newRequest';
 import { ArrowLeft } from 'lucide-react'
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
@@ -22,7 +22,8 @@ const LoginModals = ({
     login,
     onBack
 }: LoginModalsProps) => {
-    const [isLoading, setIsloading] = useState(false);
+    // const [isLoading, setIsloading] = useState(false);
+    const { setUser, isLoading, setIsLoading } = useContext(AuthContext);
 
     const {
         register,
@@ -30,27 +31,27 @@ const LoginModals = ({
     } = useForm<AuthInput>();
 
 
-
     //* LOGIN 
     const onSubmit: SubmitHandler<AuthInput> = async (value) => {
         console.log(value);
-        setIsloading(true);
+        setIsLoading(true);
 
         try {
             const res = await newRequest.post('/auth/login', value);
 
             console.log(res.data);
+            localStorage.setItem('currentUser', JSON.stringify(res.data));
+
+            setUser(res.data);
 
             toast.success('Login success!');
             setTimeout(() => {
                 window.location.replace('/');
-            }, 2000);
+            }, 3000);
         } catch (error) {
             console.log(error);
             toast.error('Wrong username or password.');
-        } finally {
-            setIsloading(false);
-        };
+        } 
     };
 
     return (

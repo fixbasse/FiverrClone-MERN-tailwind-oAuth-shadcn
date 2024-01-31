@@ -52,14 +52,14 @@ export const homeCategoryData = [
 
 const HomeCategory = () => {
     return (
-        <div className='px- max-[425px]:grid-cols-2 max-[768px]:grid max-[768px]:grid-cols-3 lg:px-20 py-4 pb-10 md:flex md:overflow-auto lg:justify-between'>
+        <div className='grid max-[600px]:grid-cols-3 max-[768px]:grid-cols-4 max-[1024px]:grid-cols-6 lg:grid-flow-col max-[1440px] mx-auto py-8 p-4 md:px-20 gap-8 lg:gap-2 overflow-auto'>
 
             {homeCategoryData.map((item) => (
                 <Link
                     to={`/categories`}
                     //to={`/categories${item.href}`}
                     key={item.label}
-                    className='flex flex-col gap-4 border max-[1024px]:m-4 rounded-xl shadow-md p-4 text-gray-900 font-semibold h-[130px] max-h-[130px] max-[1024px]:min-w-[130px] md:w-[100px] lg:w-[130px] cursor-pointer hover:bg-gray-50'>
+                    className='flex flex-col gap-4 border rounded-xl shadow-md p-4 text-sm text-gray-900 font-semibold h-[130px] max-h-[130px] max-w-[140px] w-[130px] cursor-pointer hover:bg-gray-50'>
 
                     <span>
                         {item.icon}
