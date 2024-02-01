@@ -20,10 +20,8 @@ const ShowProductPage = () => {
         };
 
         getAllGigs();
-    }, [])
-
-    console.log(showGigs);
-
+        console.log(showGigs);
+    }, []);
 
     return (
         <div className='pt-24 p-4 md:px-20'>
@@ -41,7 +39,6 @@ const ShowProductPage = () => {
                     />
 
                 ))}
-
             </section>
 
         </div>

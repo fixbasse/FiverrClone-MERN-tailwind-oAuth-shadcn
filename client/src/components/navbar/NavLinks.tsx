@@ -34,10 +34,11 @@ const NavLinks = ({
         };
 
         getUser();
+        
+        console.log(user || 'User is logged out.');
     }, []);
 
     //console.log(currentUser);
-    console.log(user || 'User is logged out.');
 
     const becomeSellerLink = () => {
         setIsLoading(true);

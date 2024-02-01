@@ -1,20 +1,18 @@
-
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import LogoAndMenubar from './LogoAndMenubar'
 import NavLinks from './NavLinks'
 // import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [onScroll, setOnScroll] = useState(false);
-    //const location = useLocation();
 
-    const isActive = () => {
+    const isActive = useCallback(() => {
         window.scrollY > 0 ? setOnScroll(true) : setOnScroll(false);
-    };
+    }, [onScroll, setOnScroll]);
 
     useEffect(() => {
         window.addEventListener('scroll', isActive);
-        
+
         return () => {
             window.removeEventListener('scroll', isActive);
         };

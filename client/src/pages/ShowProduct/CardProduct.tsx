@@ -26,7 +26,7 @@ const CardProduct = ({
 
         getUserById();
     }, []);
-
+    
     console.log(showUser);
 
     return (
