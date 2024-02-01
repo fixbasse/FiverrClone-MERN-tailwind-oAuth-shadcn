@@ -1,7 +1,9 @@
-const { createGig } = require('../controller/gig.controller');
+const { createGig, getAllGig } = require('../controller/gig.controller');
+const { verifyToken } = require('../middleware/jwt');
 
 const router = require('express').Router();
 
-router.post('/', createGig);
+router.post('/', verifyToken, createGig);
+router.get('/', getAllGig);
 
 module.exports = router;

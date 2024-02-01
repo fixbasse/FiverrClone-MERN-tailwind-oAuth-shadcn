@@ -52,7 +52,7 @@ export const homeCategoryData = [
 
 const HomeCategory = () => {
     return (
-        <div className='grid max-[600px]:grid-cols-3 max-[768px]:grid-cols-4 max-[1024px]:grid-cols-6 lg:grid-flow-col max-[1440px] mx-auto py-8 p-4 md:px-20 gap-8 lg:gap-2 overflow-auto'>
+        <div className='flex justify-center gap-2 md:gap-8 flex-wrap p-8'>
 
             {homeCategoryData.map((item) => (
                 <Link

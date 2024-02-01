@@ -1,6 +1,34 @@
+import { newRequest } from '@/lib/newRequest';
 import { Star } from 'lucide-react'
+import { useEffect, useState } from 'react';
 
-const CardProduct = () => {
+interface CardProductProps {
+    item: any;
+};
+
+const CardProduct = ({
+    item
+}: CardProductProps) => {
+    const [showUser, setShowUser] = useState('');
+
+    useEffect(() => {
+        const getUserById = async () => {
+            try {
+                const res = await newRequest.get(`/user/${item.userId}`);
+
+                //console.log(res.data);
+                //setCurrentUser(res.data);
+                setShowUser(res.data);
+            } catch (error) {
+                console.log('Cannot fetch a user');
+            }
+        };
+
+        getUserById();
+    }, []);
+
+    console.log(showUser);
+
     return (
         <div className='flex flex-col gap-1 hover:cursor-pointer'>
             <img
@@ -18,7 +46,7 @@ const CardProduct = () => {
                         className='w-[30px] h-[30px] rounded-full'
                     />
                     <h3 className='font-semibold'>
-                        Wongsapat
+                        {showUser.username}
                     </h3>
                 </div>
                 <span className='font-semibold text-gray-600'>
@@ -28,7 +56,7 @@ const CardProduct = () => {
 
             {/* DESCRIPTION */}
             <span className='text-gray-500 group-hover:underline'>
-                I will build a high quality portfolio website with responsive.
+                {item.description}
             </span>
 
             <section className='pt-2'>
@@ -44,7 +72,7 @@ const CardProduct = () => {
                         From
                     </h4>
                     <span>
-                        $90
+                        ${item.price}
                     </span>
                 </div>
             </section>

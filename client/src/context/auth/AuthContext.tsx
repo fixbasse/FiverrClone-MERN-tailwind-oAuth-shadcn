@@ -1,10 +1,9 @@
-import { ReactNode, createContext, useState } from "react";
-import jwt_decode from 'jwt-decode';
+import { createContext, useState } from "react";
 
-type AccessTokensType = {
-  access: string | undefined;
-  refresh: string | undefined;
-};
+// type AccessTokensType = {
+//   access: string | undefined;
+//   refresh: string | undefined;
+// };
 
 export type User = {
   username: string;

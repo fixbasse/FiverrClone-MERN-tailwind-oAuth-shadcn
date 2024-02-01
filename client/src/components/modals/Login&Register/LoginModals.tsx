@@ -51,6 +51,7 @@ const LoginModals = ({
         } catch (error) {
             console.log(error);
             toast.error('Wrong username or password.');
+            setIsLoading(false);
         } 
     };
 

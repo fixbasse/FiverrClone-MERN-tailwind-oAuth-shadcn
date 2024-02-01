@@ -3,7 +3,6 @@ import { Glasses, Pencil } from 'lucide-react';
 import { useContext, useEffect, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { Modals } from '../modals/Login&Register/Modals';
-import { Link } from 'react-router-dom';
 import { newRequest } from '@/lib/newRequest';
 import { AuthContext } from '@/context/auth/AuthContext';
 import { UserMenuDropdown } from '../dropdowns/UserMenuDropdown';
@@ -30,7 +29,7 @@ const NavLinks = ({
                 //setCurrentUser(res.data);
                 setUser(res.data);
             } catch (error) {
-                console.log('No user');
+                console.log('Cannot fetch a user');
             }
         };
 
@@ -38,14 +37,14 @@ const NavLinks = ({
     }, []);
 
     //console.log(currentUser);
-    console.log(user);
+    console.log(user || 'User is logged out.');
 
     const becomeSellerLink = () => {
         setIsLoading(true);
 
         setTimeout(() => {
             window.location.replace('/become-a-seller/overview');
-        }, 1000);
+        }, 500);
     }
 
 
@@ -95,10 +94,12 @@ const NavLinks = ({
                     Become a Seller
                 </button>
             ) : (
-                <Modals
-                    title='Become a Seller'
-                    onScroll={onScroll}
-                />
+                <div className='hidden lg:block'>
+                    <Modals
+                        title='Become a Seller'
+                        onScroll={onScroll}
+                    />
+                </div>
             )}
 
             <div className={user ? 'hidden' : 'hidden sm:block'}>

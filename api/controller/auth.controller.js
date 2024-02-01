@@ -33,9 +33,11 @@ const login = async (req, res) => {
         const pwdCompare = bcrypt.compareSync(req.body.password, user.password);
         if (!pwdCompare) return res.status(400).send('Wrong email or password!');
 
+        //* JWT 
         const token = jwt.sign({
             id: user._id,
-            email: user.email
+            email: user.email,
+            isSeller: user.isSeller,
         },
             process.env.JWT_SECRET
         );
@@ -46,7 +48,7 @@ const login = async (req, res) => {
             httpOnly: true,
         }).status(200).send(userInfo);
     } catch (error) {
-        res.status(500).send('Internal Error at Login')
+        res.status(500).send('Internal Error at Login');
     }
 };
 

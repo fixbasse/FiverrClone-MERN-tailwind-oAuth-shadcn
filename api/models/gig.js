@@ -5,6 +5,10 @@ const gigSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        required: false,
+    },
     title: {
         type: String,
         required: true,

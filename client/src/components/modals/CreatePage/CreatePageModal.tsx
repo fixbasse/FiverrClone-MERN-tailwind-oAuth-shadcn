@@ -1,6 +1,6 @@
-import React, { useCallback, useContext, useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
 import LayoutCreatePageModal from './LayoutCreatePageModal'
-import OverviewStep, { categoriesValue } from './OverviewStep';
+import OverviewStep from './OverviewStep';
 import PricingStep from './PricingStep';
 import DescriptionStep from './DescriptionStep';
 import ImageUpload from './ImageUpload';
@@ -42,13 +42,15 @@ const CreatePageModal = () => {
 
         console.log(value);
         setIsLoading(true);
-    
+
 
         try {
             const res = await newRequest.post('/gig', value);
             console.log(res.data);
 
-            window.location.replace('/')
+            setTimeout(() => {
+                window.location.replace('/')
+            }, 1000);
             toast.success('Gig has been create.');
         } catch (error) {
             toast.error('Something went wrong, pleas try again.');

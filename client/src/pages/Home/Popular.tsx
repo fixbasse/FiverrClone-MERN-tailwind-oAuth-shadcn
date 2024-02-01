@@ -1,5 +1,5 @@
 
-import { popularData } from '@/data/data'
+import { PopularCarousal } from '@/components/PopularCarousal'
 
 const Popular = () => {
     return (
@@ -9,27 +9,9 @@ const Popular = () => {
             </h1>
 
             <div
-                className='grid sm:grid-cols-2 md:grid-cols-4 gap-8 pt-8'
+                className='flex justify-center gap-3 md:w-[1300px] mx-auto pt-8'
             >
-                {popularData.map((item) => (
-                    <div
-
-                        key={item.label}
-                        className={`md:w-[200px] h-[240px] flex flex-col justify-between rounded-xl shadow-xl p-1.5 hover:opacity-80
-                        ${item.bg}
-                        `}
-                    >
-                        <h2 className='text-white font-semibold p-2 text-xl'>
-                            {item.label}
-                        </h2>
-
-                        <img
-                            src={item.img}
-                            className='rounded-lg h-[70%] object-cover'
-                            alt=""
-                        />
-                    </div>
-                ))}
+                <PopularCarousal />
             </div>
         </div>
     )

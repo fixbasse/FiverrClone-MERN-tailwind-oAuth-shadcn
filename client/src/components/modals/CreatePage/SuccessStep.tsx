@@ -1,5 +1,4 @@
 import { BookImage } from 'lucide-react'
-import React from 'react'
 
 const SuccessStep = () => {
     return (
