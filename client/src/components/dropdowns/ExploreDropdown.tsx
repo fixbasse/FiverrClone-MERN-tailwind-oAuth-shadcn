@@ -1,13 +1,9 @@
-import * as React from "react"
-
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Glasses, Pencil } from "lucide-react"
 import { explore } from "@/data/data"
 
 export function ExploreDropdown() {

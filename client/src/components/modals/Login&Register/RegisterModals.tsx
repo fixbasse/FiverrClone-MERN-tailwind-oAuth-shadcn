@@ -48,10 +48,11 @@ const RegisterModals = ({
             setIsloading(false);
         };
     };
+
     return (
         <section className={`text-gray-800 p-8
-    ${register ? 'block' : 'hidden'}
-    `}>
+             ${register ? 'block' : 'hidden'}
+        `}>
             {/* Back */}
             <div
                 onClick={onBack}
@@ -67,45 +68,51 @@ const RegisterModals = ({
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-2 pt-8"
             >
-                <div className="flex flex-col gap-2">
-                    <label className="font-semibold text-gray-500">
-                        Username
-                    </label>
-                    <input
-                        disabled={isLoading}
-                        type="text"
-                        className="border rounded-md p-2 outline-none focus:ring-0"
-                        {...registerInp('username', { required: true })}
-                    />
-                </div>
-                <div className="flex flex-col gap-2">
-                    <label className="font-semibold text-gray-500">
-                        Email
-                    </label>
-                    <input
-                        disabled={isLoading}
-                        type="text"
-                        className="border rounded-md p-2 outline-none focus:ring-0"
-                        {...registerInp('email', { required: true })}
-                    />
-                </div>
-                <div className="flex flex-col gap-2">
-                    <label className="font-semibold text-gray-500">
-                        Password
-                    </label>
-                    <input
-                        disabled={isLoading}
-                        type="password"
-                        className="border rounded-md p-2 outline-none focus:ring-0"
-                        {...registerInp('password', { required: true })}
-                    />
-                </div>
+                <>
+                    <div className="flex flex-col gap-2">
+                        <label className="font-semibold text-gray-500">
+                            Username
+                        </label>
+                        <input
+                            disabled={isLoading}
+                            type="text"
+                            className="border rounded-md p-2 outline-none focus:ring-0"
+                            {...registerInp('username', { required: true })}
+                        />
+                    </div>
+                </>
+                <>
+                    <div className="flex flex-col gap-2">
+                        <label className="font-semibold text-gray-500">
+                            Email
+                        </label>
+                        <input
+                            disabled={isLoading}
+                            type="text"
+                            className="border rounded-md p-2 outline-none focus:ring-0"
+                            {...registerInp('email', { required: true })}
+                        />
+                    </div>
+                </>
+                <>
+                    <div className="flex flex-col gap-2">
+                        <label className="font-semibold text-gray-500">
+                            Password
+                        </label>
+                        <input
+                            disabled={isLoading}
+                            type="password"
+                            className="border rounded-md p-2 outline-none focus:ring-0"
+                            {...registerInp('password', { required: true })}
+                        />
+                    </div>
+                </>
 
                 <button
                     type="submit"
                     disabled={isLoading}
                     className={`bg-gray-900 text-gray-50 font-semibold p-3 my-4 rounded-md
-                ${isLoading && 'bg-gray-100 opacity-75 '}
+                        ${isLoading && 'bg-gray-100 opacity-75 '}
                 `}>
                     Register
                 </button>

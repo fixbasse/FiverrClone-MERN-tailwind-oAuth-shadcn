@@ -16,7 +16,7 @@ const ShowProductPage = () => {
                 setShowGigs(res.data);
             } catch (error) {
                 console.log(error);
-            }
+            };
         };
 
         getAllGigs();
@@ -26,9 +26,9 @@ const ShowProductPage = () => {
     return (
         <div className='pt-24 p-4 md:px-20'>
             <ShowProductHeader />
-
             <hr />
 
+            {/* FILTER BUTTON */}
             <FilterShowProduct />
 
             <section className='grid max-[600px]:grid-cols-1 max-[768px]:grid-cols-2 max-[1024px]:grid-cols-3 lg:grid-cols-4 gap-8 pt-4'>
@@ -37,7 +37,6 @@ const ShowProductPage = () => {
                         key={item._id}
                         item={item}
                     />
-
                 ))}
             </section>
 

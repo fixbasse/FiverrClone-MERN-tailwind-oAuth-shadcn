@@ -12,7 +12,7 @@ const SHEET_SIDES = ["left"] as const
 // type SheetSide = (typeof SHEET_SIDES)[number]
 
 export function Sidebar() {
-    const { user, setUser, setIsLoading } = useContext(AuthContext);
+    const { user, setIsLoading } = useContext(AuthContext);
 
     const becomeSellerLink = () => {
         setIsLoading(true);

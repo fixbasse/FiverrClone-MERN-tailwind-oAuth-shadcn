@@ -9,7 +9,7 @@ interface CardProductProps {
 const CardProduct = ({
     item
 }: CardProductProps) => {
-    const [showUser, setShowUser] = useState('');
+    const [showUser, setShowUser] = useState([]);
 
     useEffect(() => {
         const getUserById = async () => {

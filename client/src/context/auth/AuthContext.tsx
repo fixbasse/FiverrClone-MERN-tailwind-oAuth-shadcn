@@ -15,7 +15,7 @@ export type User = {
 interface CurrentUserContextType {
   // authTokens: AccessTokensType;
   // setAuthTokens: React.Dispatch<React.SetStateAction<AccessTokensType>>;
-  user: User | undefined;
+  user: User | undefined | string | any;
   setUser: React.Dispatch<React.SetStateAction<string | undefined>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;

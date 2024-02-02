@@ -6,18 +6,17 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { AuthContext, User } from "@/context/auth/AuthContext"
+import { AuthContext } from "@/context/auth/AuthContext"
 import { newRequest } from "@/lib/newRequest";
+
 import toast from "react-hot-toast";
 
-interface UserMenuDropdownProps {
-    user: User | undefined;
-};
+// interface UserMenuDropdownProps {
+//     user: User | undefined | string;
+// };
 
-export function UserMenuDropdown({
-    user
-}: UserMenuDropdownProps) {
-    const { callLogOut, setIsLoading } = React.useContext(AuthContext);
+export function UserMenuDropdown() {
+    const { callLogOut, setIsLoading, user } = React.useContext(AuthContext);
 
     const googleLogout = async () => {
         setIsLoading(true);
@@ -32,12 +31,14 @@ export function UserMenuDropdown({
                 window.location.replace('/')
             }, 2000);
 
-
         } catch (error) {
             toast.error('Something went wrong!');
             console.log(error);
         };
     };
+
+    console.log(user);
+    
 
     return (
         <DropdownMenu>
