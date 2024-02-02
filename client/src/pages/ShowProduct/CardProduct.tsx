@@ -16,8 +16,6 @@ const CardProduct = ({
             try {
                 const res = await newRequest.get(`/user/${item.userId}`);
 
-                //console.log(res.data);
-                //setCurrentUser(res.data);
                 setShowUser(res.data);
             } catch (error) {
                 console.log('Cannot fetch a user');

@@ -1,11 +1,22 @@
-Completed this first
--Auth * 
+<!--* Completed  -->
+-UI
+-Auth 
+-Create Gig - POST
+-Display all gig - GET 
 
 <!-- ** NOW -->
--Create Gig - POST - ERROR
--Display all gig - GET
+-Filter Gig
+-User choose to become seller
 -Display Single Gig - GET BY ID
+-Purchase
 -Diplay orders when someone purchase
+-User account - PUT 
+-Chat App - POST
+-Review - POST
+-Delete Gig - DELETE
+
+
+
 
 <!-- *AUTH -->
 -There're access token but need refresh token
