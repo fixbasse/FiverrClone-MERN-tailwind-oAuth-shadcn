@@ -19,6 +19,8 @@ const CardProduct = ({
                 setShowUser(res.data);
             } catch (error) {
                 console.log('Cannot fetch a user');
+            
+                
             }
         };
 
