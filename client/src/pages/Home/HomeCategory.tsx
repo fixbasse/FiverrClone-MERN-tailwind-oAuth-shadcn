@@ -53,10 +53,9 @@ export const homeCategoryData = [
 const HomeCategory = () => {
     return (
         <div className='flex justify-center gap-2 md:gap-8 flex-wrap p-8'>
-
             {homeCategoryData.map((item) => (
                 <Link
-                    to={`/categories`}
+                    to={`/show-product`}
                     //to={`/categories${item.href}`}
                     key={item.label}
                     className='flex flex-col gap-4 border rounded-xl shadow-md p-4 text-sm text-gray-900 font-semibold h-[130px] max-h-[130px] max-w-[140px] w-[130px] cursor-pointer hover:bg-gray-50'>

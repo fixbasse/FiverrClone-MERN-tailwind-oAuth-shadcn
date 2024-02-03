@@ -33,8 +33,20 @@ const getAllGig = async (req, res) => {
 
         res.status(200).send(gig);
     } catch (error) {
-        res.status(500).send('Internal Error.');
+        res.status(500).send('Internal Error at getAllGig');
     }
-}
+};
 
-module.exports = { createGig, getAllGig }
+//* GET By ID
+const getGigById = async (req, res) => {
+    try {
+        const singleGig = await Gig.findById(req.params.id);
+        if (!singleGig) return res.status(404).send('Gig not found!');
+
+        res.status(200).send(singleGig);
+    } catch (error) {
+        res.status(500).send('Internal Error at getGigById');
+    };
+};
+
+module.exports = { createGig, getAllGig, getGigById }

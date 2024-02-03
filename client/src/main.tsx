@@ -10,14 +10,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
 
-
       <AuthProvider>
 
         <ToastProvider />
         <App />
       
       </AuthProvider>
-
 
     </BrowserRouter>
   </React.StrictMode>,

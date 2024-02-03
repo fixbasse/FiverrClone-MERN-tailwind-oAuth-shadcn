@@ -1,11 +1,12 @@
-import { FieldValues, UseFormRegister } from "react-hook-form"
+import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form"
 
 interface PricingProps {
-    register: UseFormRegister<FieldValues>
+    register: UseFormRegister<FieldValues>;
+    errors?: FieldErrors<FieldValues>;
 };
 
 const PricingStep = ({
-    register
+    register,
 }: PricingProps) => {
     return (
         <div>
@@ -62,7 +63,7 @@ const PricingStep = ({
                                 <select
                                     {...register('delivery')}
                                 >
-                                    <option value="">
+                                    <option value="" disabled>
                                         DELIVERY TIME
                                     </option>
                                     <option value={1}>1 DAY DELIVERY</option>
@@ -79,7 +80,7 @@ const PricingStep = ({
                             <th className='border'>
                                 <select
                                     {...register('pages')}
-                                    className=" outline-none focus:ring-0">
+                                    className="outline-none focus:ring-0">
                                     <option value={1}>
                                         1
                                     </option>
@@ -95,11 +96,14 @@ const PricingStep = ({
                                 Price
                             </th>
                             <th className='border'>
+                                <label className="pr-2">
+                                    $
+                                </label>
                                 <input
                                     type="number"
-                                    placeholder="$"
+                                    placeholder=""
                                     className="outline-none focus:ring-0 w-24 font-light placeholder:text-gray-950"
-                                    {...register('price')}
+                                    {...register('price', { max: 1000 })}
                                 />
                             </th>
                         </tr>

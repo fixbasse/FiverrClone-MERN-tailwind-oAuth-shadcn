@@ -1,6 +1,7 @@
 import { newRequest } from '@/lib/newRequest';
 import { Star } from 'lucide-react'
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 interface CardProductProps {
     item: any;
@@ -19,18 +20,19 @@ const CardProduct = ({
                 setShowUser(res.data);
             } catch (error) {
                 console.log('Cannot fetch a user');
-            
-                
-            }
+            };
         };
 
         getUserById();
     }, []);
-    
-    console.log(showUser);
+
+    //console.log(showUser);
 
     return (
-        <div className='flex flex-col gap-1 hover:cursor-pointer'>
+        <Link
+            to={`/single-product/1`}
+            className='flex flex-col gap-1 hover:cursor-pointer'
+        >
             <img
                 src="https://images.pexels.com/photos/19748403/pexels-photo-19748403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="/"
@@ -46,7 +48,7 @@ const CardProduct = ({
                         className='w-[30px] h-[30px] rounded-full'
                     />
                     <h3 className='font-semibold'>
-                        {showUser.username}
+                        {showUser?.username}
                     </h3>
                 </div>
                 <span className='font-semibold text-gray-600'>
@@ -56,11 +58,11 @@ const CardProduct = ({
 
             {/* DESCRIPTION */}
             <span className='text-gray-500 group-hover:underline'>
-                {item.description}
+                {item?.description}
             </span>
 
+            {/* STARS & PRICE */}
             <section className='pt-2'>
-                {/* STARS */}
                 <div className='flex items-center gap-1 font-semibold'>
                     <Star size={15} />
                     4.2
@@ -77,7 +79,7 @@ const CardProduct = ({
                 </div>
             </section>
 
-        </div>
+        </Link>
     )
 }
 

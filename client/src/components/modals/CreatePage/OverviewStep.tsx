@@ -17,6 +17,8 @@ interface OverviewProps {
 const OverviewStep = ({
     register
 }: OverviewProps) => {
+    console.log({ ...register('category') });
+
     return (
         <>
             <section className='grid md:grid-cols-3 gap-2'>
@@ -48,7 +50,7 @@ const OverviewStep = ({
                         {...register('category')}
                         className='border border-gray-400 p-3 w-full rounded-sm outline-none focus:ring-0'
                     >
-                        <option value=''>SELECT A CATEGORY</option>
+                        <option value='' disabled>SELECT A CATEGORY</option>
                         <option value='graphic'>Graphic & design</option>
                         <option value='music'>MUSIC & AUDIO</option>
                         <option value='programming'>PROGRAMMING & TECH</option>

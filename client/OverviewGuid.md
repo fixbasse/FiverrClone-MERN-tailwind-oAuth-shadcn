@@ -5,15 +5,16 @@
 -Display all gig - GET 
 
 <!-- ** NOW -->
--Filter Gig
--User choose to become seller
+-Filter Gig with CATEGORY
 -Display Single Gig - GET BY ID
+-Delete Gig - DELETE
+
+-User choose to become seller
 -Purchase
 -Diplay orders when someone purchase
 -User account - PUT 
 -Chat App - POST
 -Review - POST
--Delete Gig - DELETE
 
 
 

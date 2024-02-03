@@ -1,4 +1,4 @@
-import { useCallback, useContext, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import LayoutCreatePageModal from './LayoutCreatePageModal'
 import OverviewStep from './OverviewStep';
 import PricingStep from './PricingStep';
@@ -18,13 +18,24 @@ enum STEPS {
     PUBLISH = 4,
 };
 
+// export type FormValues = {
+//     title: string;
+//     category: string;
+//     keyword: string;
+//     packageName: string;
+//     offering: string;
+//     delivery: number;
+
+// };
+
 const CreatePageModal = () => {
     const [steps, setSteps] = useState(STEPS.OVERVIEW);
     const { isLoading, setIsLoading } = useContext(AuthContext);
     const {
         register,
-        handleSubmit
-    } = useForm();
+        handleSubmit,
+        formState: { errors }
+    } = useForm<FieldValues>();
 
     const onNext = () => {
         setSteps((value) => value + 1);
@@ -33,6 +44,10 @@ const CreatePageModal = () => {
     const onBack = () => {
         setSteps((value) => value - 1);
     };
+
+    useEffect(() => {
+        
+    },[]);
 
     //* Submit & Next  
     const onSubmit: SubmitHandler<FieldValues> = async (value) => {
@@ -62,7 +77,7 @@ const CreatePageModal = () => {
     const handleBack = useCallback(() => {
         if (steps === STEPS.OVERVIEW) {
             return null;
-        }
+        };
 
         onBack();
     }, [onBack]);
@@ -81,6 +96,7 @@ const CreatePageModal = () => {
         bodyContent = (
             <PricingStep
                 register={register}
+                errors={errors}
             />
         )
     };

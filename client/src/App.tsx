@@ -9,6 +9,7 @@ import ShowProductPage from "./pages/ShowProduct/ShowProductPage"
 import { useContext } from "react"
 import { AuthContext } from "./context/auth/AuthContext"
 import PrivateRoute from "./PrivateRoute"
+import SingleProductPage from "./pages/SingleProduct/SingleProductPage"
 
 function App() {
   const { isLoading } = useContext(AuthContext);
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/categories" element={<CategoryPage />} />
         <Route path="/show-product" element={<ShowProductPage />} />
+        <Route path="/single-product/:id" element={<SingleProductPage />} />
         <Route path="/become-a-seller/overview" element={<SellerPage />} />
         <Route path="/become-a-seller/seller_info" element={<InfoSeller />} />
 

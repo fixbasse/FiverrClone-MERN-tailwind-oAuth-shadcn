@@ -23,7 +23,7 @@ export function PopularCarousal() {
                     <CarouselItem key={index} className="md:basis-1/4 lg:basis-1/6">
                         <div className="">
                             <Card
-                                className={`h-[250px] text-white
+                                className={`h-[250px] text-white hover:opacity-80 cursor-pointer
                                 
                                 `}
                             >
@@ -32,7 +32,7 @@ export function PopularCarousal() {
                                     <img
                                         src={item.img}
                                         className=" h-full rounded-md object-cover"
-                                        alt=""
+                                        alt="/"
                                     />
                                 </CardContent>
                             </Card>
