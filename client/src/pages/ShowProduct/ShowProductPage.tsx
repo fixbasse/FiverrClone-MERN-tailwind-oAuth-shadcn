@@ -6,7 +6,7 @@ import { newRequest } from '@/lib/newRequest'
 
 //* PAGE 
 const ShowProductPage = () => {
-    const [showGigs, setShowGigs] = useState([]);
+    const [showGigs, setShowGigs] = useState<any[]>([]);
 
     useEffect(() => {
         const getAllGigs = async () => {
@@ -32,7 +32,7 @@ const ShowProductPage = () => {
             <FilterShowProduct />
 
             <section className='grid max-[600px]:grid-cols-1 max-[768px]:grid-cols-2 max-[1024px]:grid-cols-3 lg:grid-cols-4 gap-8 pt-4'>
-                {showGigs.map((item: any) => (
+                {showGigs.map((item) => (
                     <CardProduct
                         key={item._id}
                         item={item}
