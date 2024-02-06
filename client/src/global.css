@@ -111,22 +111,22 @@ textarea {
 
 /** <--------------------- BUTTON Loading ANIMATION =  */
 .loadingAnimate {
-  width: 5px;
-  height: 5px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   animation: load 0.8s ease infinite;
 }
 
 .loadingAnimate.one {
-  animation-delay: 0.1s;
+  animation-delay: 0.3s;
 }
 
 .loadingAnimate.two {
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
 }
 
 .loadingAnimate.three {
-  animation-delay: 0.3s;
+  animation-delay: 0.5s;
 }
 
 .loadingAnimate.four {
@@ -135,12 +135,20 @@ textarea {
 
 @keyframes load {
   0% {
-    height: 7px;
-    width: 7px;
+    height: 20px;
+    width: 20px;
   }
 
   50% {
-    height: 7px;
-    width: 7px;
+    height: 40px;
+    width: 40px;
   }
+}
+
+
+.descript-trim {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow: '...';
 }

@@ -148,4 +148,23 @@ export const categoriesInfo = [
             },
         ]
     },
-]
+];
+
+export const sidebarData = [
+    {
+        label: 'Home',
+        href: '/',
+    },
+    {
+        label: 'Inbox',
+        href: '/inbox',
+    },
+    {
+        label: 'Manage Orders',
+        href: '/orders',
+    },
+    {
+        label: 'Lists',
+        href: '/lists',
+    },
+];

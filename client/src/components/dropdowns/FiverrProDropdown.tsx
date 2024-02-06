@@ -8,12 +8,18 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Glasses, Pencil } from "lucide-react"
 
-export function FiverProDropdown() {
+interface FiverProsProps {
+    onScroll?: boolean;
+};
+
+export function FiverProDropdown({
+    onScroll
+}: FiverProsProps) {
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <button>
+                <button className={onScroll ? 'text-gray-700':'text-white'}>
                     Fiverr Pro
                 </button>
 

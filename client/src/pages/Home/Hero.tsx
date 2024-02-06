@@ -56,13 +56,11 @@ const Hero = () => {
       </section>
 
       {/* RIGHT */}
-
       <section className="md:flex-1 hidden md:block">
         <img
           src="/man.png"
-          alt="" 
-          
-          />
+          alt="/"
+        />
       </section>
 
     </div>

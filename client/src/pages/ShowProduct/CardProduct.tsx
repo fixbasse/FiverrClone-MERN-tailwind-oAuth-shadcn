@@ -1,7 +1,12 @@
+import {
+    useContext,
+    useEffect,
+    useState
+} from 'react';
+import { Link } from 'react-router-dom';
 import { newRequest } from '@/lib/newRequest';
 import { Star } from 'lucide-react'
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { AuthContext } from '@/context/auth/AuthContext';
 
 interface CardProductProps {
     item: any;
@@ -10,14 +15,19 @@ interface CardProductProps {
 const CardProduct = ({
     item
 }: CardProductProps) => {
-    const [showUser, setShowUser] = useState<any>([]);
+    const [showUser, setShowUser] = useState<any>([]); // .map type: never[]
+    const { setIsLoading } = useContext(AuthContext);
 
+    //* GET USER DATA 
     useEffect(() => {
         const getUserById = async () => {
+            //setIsLoading(true);
+
             try {
                 const res = await newRequest.get(`/user/${item.userId}`);
 
                 setShowUser(res.data);
+                //setIsLoading(false);
             } catch (error) {
                 console.log('Cannot fetch a user');
             };
@@ -30,12 +40,12 @@ const CardProduct = ({
 
     return (
         <Link
-            to={`/single-product/1`}
+            to={`/single-product/${item._id}`}
             className='flex flex-col gap-1 hover:cursor-pointer'
         >
             <img
                 src="https://images.pexels.com/photos/19748403/pexels-photo-19748403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="/"
+                alt="productImg"
                 className='w-full h-[200px] object-cover rounded-md group'
             />
 
@@ -44,7 +54,7 @@ const CardProduct = ({
                 <div className='flex items-center gap-2'>
                     <img
                         src="https://images.pexels.com/photos/19748403/pexels-photo-19748403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                        alt="/"
+                        alt="userImg"
                         className='w-[30px] h-[30px] rounded-full'
                     />
                     <h3 className='font-semibold'>
@@ -57,9 +67,9 @@ const CardProduct = ({
             </section>
 
             {/* DESCRIPTION */}
-            <span className='text-gray-500 group-hover:underline'>
+            <p className='descript-trim text-gray-500 group-hover:underline'>
                 {item?.description}
-            </span>
+            </p>
 
             {/* STARS & PRICE */}
             <section className='pt-2'>

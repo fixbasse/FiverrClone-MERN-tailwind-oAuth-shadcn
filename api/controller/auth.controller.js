@@ -54,10 +54,10 @@ const login = async (req, res) => {
 
 //* LOGOUT 
 const logout = async (req, res) => {
-    req.session.destroy(() => {
-        req.logout();
-    })
-    res.clearCookie('connect.sid')
+    // req.session.destroy(() => {
+    //     req.logout();
+    // })
+    // res.clearCookie('connect.sid')
 
     res.clearCookie('accessToken', {
         sameSite: 'none',

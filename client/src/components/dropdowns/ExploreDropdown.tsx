@@ -6,12 +6,18 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { explore } from "@/data/data"
 
-export function ExploreDropdown() {
+interface ExploreProps {
+    onScroll?: boolean;
+};
+
+export function ExploreDropdown({
+    onScroll
+}: ExploreProps) {
 
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <button>
+                <button className={onScroll ? 'text-gray-600' : 'text-white'}>
                     Explore
                 </button>
 

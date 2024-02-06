@@ -1,5 +1,6 @@
+import { AuthContext } from "@/context/auth/AuthContext";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form"
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -12,7 +13,7 @@ type InfoSellerTypes = {
 };
 
 const InfoSeller = () => {
-    const [isLoading, setIsLoading] = useState(false);
+    const { isLoading, setIsLoading } = useContext(AuthContext);
     const [showModal, setShowModal] = useState(false);
     const {
         register,
@@ -32,8 +33,6 @@ const InfoSeller = () => {
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong.');
-        } finally {
-            setIsLoading(false);
         };
     };
 
@@ -121,14 +120,25 @@ const InfoSeller = () => {
                     </section>
 
 
-                    <button
-                        disabled={isLoading}
-                        className={`text-white bg-orange-800 p-2 rounded-sm font-semibold md:w-[200px] flex justify-center items-center
+                    <section className="flex items-center gap-4">
+                        <button
+                            disabled={isLoading}
+                            className={`text-white bg-orange-800 p-2 rounded-sm font-semibold md:w-[200px] flex justify-center items-center
                         ${isLoading && ' opacity-50'}
                         `}
-                    >
-                        Submit
-                    </button>
+                        >
+                            Submit
+                        </button>
+                        <Link
+                            to='/create'
+                            //disabled={isLoading}
+                            className={`text-white bg-orange-800 p-2 rounded-sm font-semibold md:w-[200px] flex justify-center items-center
+                            ${isLoading && ' opacity-50'}
+                            `}
+                        >
+                            Or Create Gig
+                        </Link>
+                    </section>
                 </form>
 
             </section>

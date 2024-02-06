@@ -3,6 +3,7 @@ import { Image } from 'lucide-react'
 const ImageUpload = () => {
     return (
         <>
+        <hr />
             <h1 className='text-3xl'>
                 Showcase Your Services In A Gig Gallery
             </h1>

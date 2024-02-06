@@ -1,22 +1,25 @@
-import { Route, Routes } from "react-router-dom"
+import {
+  Route,
+  Routes
+} from "react-router-dom"
+import PrivateRoute from "./PrivateRoute"
+
+import Navbar from "./components/navbar/Navbar"
 import HomePage from "./pages/Home/HomePage"
 import CategoryPage from "./pages/Category/CategoryPage"
 import SellerPage from "./pages/BecomeASeller/SellerPage"
 import InfoSeller from "./pages/BecomeASeller/InfoSellerPage"
-import Navbar from "./components/navbar/Navbar"
 import CreatePage from "./pages/Create/CreatePage"
 import ShowProductPage from "./pages/ShowProduct/ShowProductPage"
-import { useContext } from "react"
-import { AuthContext } from "./context/auth/AuthContext"
-import PrivateRoute from "./PrivateRoute"
 import SingleProductPage from "./pages/SingleProduct/SingleProductPage"
+import LoadingAnimate from "./components/LoadingAnimate"
+import ProfilePage from "./pages/Profile/ProfilePage"
 
 function App() {
-  const { isLoading } = useContext(AuthContext);
+
   return (
-    <div
-      className={isLoading ? 'opacity-50' : undefined}
-    >
+    <div>
+      <LoadingAnimate />
       <Navbar />
 
       <Routes>
@@ -24,11 +27,13 @@ function App() {
         <Route path="/categories" element={<CategoryPage />} />
         <Route path="/show-product" element={<ShowProductPage />} />
         <Route path="/single-product/:id" element={<SingleProductPage />} />
-        <Route path="/become-a-seller/overview" element={<SellerPage />} />
-        <Route path="/become-a-seller/seller_info" element={<InfoSeller />} />
 
+        {/* ONLY LOGIN USER CAN CREATE */}
         <Route element={<PrivateRoute />}>
           <Route path="/create" element={<CreatePage />} />
+          <Route path="/become-a-seller/overview" element={<SellerPage />} />
+          <Route path="/become-a-seller/seller_info" element={<InfoSeller />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
         </Route>
 
       </Routes>
@@ -37,4 +42,3 @@ function App() {
 }
 
 export default App
-// this app fetch by name 

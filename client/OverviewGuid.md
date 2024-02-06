@@ -16,6 +16,9 @@
 -Chat App - POST
 -Review - POST
 
+<!-- Loading -->
+-Loading animation or skeleton
+at Gig Card, cut a long descreption
 
 
 

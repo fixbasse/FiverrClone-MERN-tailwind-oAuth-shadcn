@@ -9,6 +9,7 @@ import { SubmitHandler, useForm, FieldValues } from 'react-hook-form';
 import { AuthContext } from '@/context/auth/AuthContext';
 import toast from 'react-hot-toast';
 import { newRequest } from '@/lib/newRequest';
+import CreatePageHeader from './CreatePageHeader';
 
 enum STEPS {
     OVERVIEW = 0,
@@ -46,8 +47,8 @@ const CreatePageModal = () => {
     };
 
     useEffect(() => {
-        
-    },[]);
+
+    }, []);
 
     //* Submit & Next  
     const onSubmit: SubmitHandler<FieldValues> = async (value) => {
@@ -85,6 +86,10 @@ const CreatePageModal = () => {
 
     let bodyContent = (
         <>
+            <CreatePageHeader
+                number={1}
+                title='Overview'
+            />
             <OverviewStep
                 register={register}
             />
@@ -94,26 +99,44 @@ const CreatePageModal = () => {
     //* 2nd STEPS PRICING
     if (steps === STEPS.PRICING) {
         bodyContent = (
-            <PricingStep
-                register={register}
-                errors={errors}
-            />
+            <>
+                <CreatePageHeader
+                    number={2}
+                    title='Scope & Pricing'
+                />
+                <PricingStep
+                    register={register}
+                    errors={errors}
+                />
+            </>
         )
     };
 
     //* 3rd STEPS DESCRIPTION 
     if (steps === STEPS.DESCRIPTION) {
         bodyContent = (
-            <DescriptionStep
-                register={register}
-            />
+            <>
+                <CreatePageHeader
+                    number={3}
+                    title='Description'
+                />
+                <DescriptionStep
+                    register={register}
+                />
+            </>
         )
     };
 
     //* 4 STEPS IMAGE
     if (steps === STEPS.IMAGE) {
         bodyContent = (
-            <ImageUpload />
+            <>
+                <CreatePageHeader
+                    number={4}
+                    title='Gallery'
+                />
+                <ImageUpload />
+            </>
         )
     }
 

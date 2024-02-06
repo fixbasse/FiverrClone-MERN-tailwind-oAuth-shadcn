@@ -1,4 +1,6 @@
+import { newRequest } from "@/lib/newRequest";
 import { createContext, useState } from "react";
+import toast from "react-hot-toast";
 
 // type AccessTokensType = {
 //   access: string | undefined;
@@ -41,9 +43,24 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const callLogOut = () => {
-    setUser(undefined);
-    localStorage.removeItem('currentUser');
+  //* LOGOUT 
+  const callLogOut = async () => {
+    setIsLoading(true);
+
+    try {
+      const res = await newRequest.post('/auth/logout');
+
+      console.log(res.data);
+      toast.success('Logout success!');
+
+      localStorage.removeItem('currentUser');
+      setIsLoading(false);
+      setUser(undefined);
+     // window.location.reload();
+    } catch (error) {
+      toast.error('Something went wrong!');
+      console.log(error);
+    };
   };
 
   return (

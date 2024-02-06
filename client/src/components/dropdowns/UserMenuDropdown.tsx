@@ -6,39 +6,12 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
 import { AuthContext } from "@/context/auth/AuthContext"
-import { newRequest } from "@/lib/newRequest";
-
-import toast from "react-hot-toast";
-
-// interface UserMenuDropdownProps {
-//     user: User | undefined | string;
-// };
+import { Link } from "react-router-dom";
 
 export function UserMenuDropdown() {
-    const { callLogOut, setIsLoading, user } = React.useContext(AuthContext);
-
-    const googleLogout = async () => {
-        setIsLoading(true);
-
-        try {
-            const res = await newRequest.get('/auth/logout');
-
-            console.log(res.data);
-            toast.success('Logout success!');
-
-            setTimeout(() => {
-                window.location.replace('/')
-            }, 2000);
-
-        } catch (error) {
-            toast.error('Something went wrong!');
-            console.log(error);
-        };
-    };
-
-   // console.log(user);
-    
+    const { callLogOut, user } = React.useContext(AuthContext);
 
     return (
         <DropdownMenu>
@@ -47,19 +20,20 @@ export function UserMenuDropdown() {
                     src={user?.userImg || '/noavatar.jpg'}
                     className='w-[40px] h-[40px] rounded-full cursor-pointer'
                 />
-
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-[150px]">
                 <DropdownMenuCheckboxItem
-                    className="p-2"
+                    className="p-2 hover:text-orange-800 hover:font-medium"
                 >
-                    <button className="text-gray-500">
-                        Dashboard
-                    </button>
+                    <Link
+                        to='/profile/1'
+                        className=" ">
+                        Profile
+                    </Link>
                 </DropdownMenuCheckboxItem>
                 <DropdownMenuCheckboxItem
                     className="p-2"
-                    onClick={callLogOut || googleLogout}
+                    onClick={callLogOut}
                 >
                     <button
                         className="font-semibold">
@@ -69,4 +43,4 @@ export function UserMenuDropdown() {
             </DropdownMenuContent>
         </DropdownMenu>
     )
-}
+};

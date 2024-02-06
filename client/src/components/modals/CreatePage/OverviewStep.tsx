@@ -21,6 +21,7 @@ const OverviewStep = ({
 
     return (
         <>
+        <hr />
             <section className='grid md:grid-cols-3 gap-2'>
                 <div className='col-span-1'>
                     <h3 className='font-semibold text-xl'>

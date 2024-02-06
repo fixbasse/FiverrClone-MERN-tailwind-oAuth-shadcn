@@ -10,10 +10,6 @@ const PricingStep = ({
 }: PricingProps) => {
     return (
         <div>
-            <h1 className='text-3xl pb-4'>
-                Scope & Pricing
-            </h1>
-
             <hr />
 
             <section>

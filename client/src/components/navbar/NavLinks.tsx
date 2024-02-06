@@ -1,7 +1,11 @@
-import { useContext, useEffect } from 'react'
-import { Modals } from '../modals/Login&Register/Modals';
+import {
+    useContext,
+    useEffect
+} from 'react'
 import { newRequest } from '@/lib/newRequest';
 import { AuthContext } from '@/context/auth/AuthContext';
+
+import { Modals } from '../modals/Login&Register/Modals';
 import { UserMenuDropdown } from '../dropdowns/UserMenuDropdown';
 import { FiverProDropdown } from '../dropdowns/FiverrProDropdown';
 import { ExploreDropdown } from '../dropdowns/ExploreDropdown';
@@ -19,30 +23,28 @@ const NavLinks = ({
         setUser,
         setIsLoading
     } = useContext(AuthContext);
-    // const [user, setUser] = useState([]);
 
+    //* GET USER DATA 
     useEffect(() => {
         const getUser = async () => {
             try {
                 const res = await newRequest.get('/auth/login');
 
-                //console.log(res.data);
                 setUser(res.data);
             } catch (error) {
                 console.log('Cannot fetch a user');
-            }
+            };
         };
 
         getUser();
         console.log(user || 'User is logged out.');
     }, []);
 
+    // 
     const becomeSellerLink = () => {
         setIsLoading(true);
 
-        setTimeout(() => {
-            window.location.replace('/become-a-seller/overview');
-        }, 500);
+        window.location.replace('/become-a-seller/overview');
     };
 
     return (
@@ -51,10 +53,10 @@ const NavLinks = ({
             {/* DROPDOWN MENU */}
             <>
                 <div className='hidden md:block'>
-                    <FiverProDropdown />
+                    <FiverProDropdown onScroll={onScroll} />
                 </div>
                 <div className='hidden md:block'>
-                    <ExploreDropdown />
+                    <ExploreDropdown onScroll={onScroll} />
                 </div>
             </>
 
@@ -63,15 +65,14 @@ const NavLinks = ({
                 {user ? (
                     <button
                         onClick={becomeSellerLink}
-                        //to='/become-a-seller/overview'
-                        className={`hidden lg:block
-                ${onScroll
+                        className={`hidden md:block
+                    ${onScroll
                             && 'hover:text-orange-800 text-gray-500'}
                     `}>
                         Become a Seller
                     </button>
                 ) : (
-                    <div className='hidden lg:block'>
+                    <div className='hidden md:block'>
                         <Modals
                             title='Become a Seller'
                             onScroll={onScroll}
@@ -98,9 +99,8 @@ const NavLinks = ({
 
             {/* USER Image & Menu */}
             <>
-                <div className={user ? 'block' : 'hidden'}>
+                <div className={user ? 'block max-[375px]:hidden' : 'hidden'}>
                     <UserMenuDropdown
-                        //user={user}
                     />
                 </div>
             </>

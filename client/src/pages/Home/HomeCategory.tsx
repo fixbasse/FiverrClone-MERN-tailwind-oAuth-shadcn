@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+
 import { Database, FileDigitIcon, GitGraphIcon, ImageDownIcon, Languages, Music, TabletSmartphoneIcon, Video } from 'lucide-react'
 import { FcBusiness } from 'react-icons/fc'
-import { Link } from 'react-router-dom';
+
 
 export const homeCategoryData = [
     {
@@ -58,17 +60,14 @@ const HomeCategory = () => {
                     to={`/show-product`}
                     //to={`/categories${item.href}`}
                     key={item.label}
-                    className='flex flex-col gap-4 border rounded-xl shadow-md p-4 text-sm text-gray-900 font-semibold h-[130px] max-h-[130px] max-w-[140px] w-[130px] cursor-pointer hover:bg-gray-50'>
-
+                    className='flex flex-col gap-4 border rounded-xl shadow-md p-4 text-sm text-gray-900 font-semibold h-[130px] max-h-[130px] max-w-[140px] w-[130px] cursor-pointer hover:bg-gray-50'
+                >
                     <span>
                         {item.icon}
                     </span>
-
-                    <div>
-                        <h2 className='max-[425px]:text-sm'>
-                            {item.label}
-                        </h2>
-                    </div>
+                    <h2 className='max-[425px]:text-sm'>
+                        {item.label}
+                    </h2>
                 </Link>
             ))}
 

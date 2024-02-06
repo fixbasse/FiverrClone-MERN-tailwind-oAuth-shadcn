@@ -1,13 +1,14 @@
+import { useContext } from "react";
+import { AuthContext } from "@/context/auth/AuthContext";
 import { newRequest } from "@/lib/newRequest";
 import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 interface RegisterModalsProps {
     register: boolean;
     onBack: () => void;
-}
+};
 
 type AuthInput = {
     username: string;
@@ -20,7 +21,7 @@ const RegisterModals = ({
     register,
     onBack
 }: RegisterModalsProps) => {
-    const [isLoading, setIsloading] = useState(false);
+    const { isLoading, setIsLoading } = useContext(AuthContext);
 
     const {
         register: registerInp,
@@ -30,7 +31,7 @@ const RegisterModals = ({
     //* REGISTER 
     const onSubmit: SubmitHandler<AuthInput> = async (value) => {
         console.log(value);
-        setIsloading(true);
+        setIsLoading(true);
 
         try {
             const res = await newRequest.post('/auth/register', value);
@@ -41,11 +42,11 @@ const RegisterModals = ({
             setTimeout(() => {
                 window.location.replace('/');
             }, 1000);
+            
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong.');
-        } finally {
-            setIsloading(false);
         };
     };
 

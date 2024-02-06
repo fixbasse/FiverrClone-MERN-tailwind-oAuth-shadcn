@@ -27,7 +27,7 @@ const LoginModals = ({
 
     const {
         register,
-        handleSubmit
+        handleSubmit,
     } = useForm<AuthInput>();
 
 
@@ -46,13 +46,15 @@ const LoginModals = ({
 
             toast.success('Login success!');
             setTimeout(() => {
-                window.location.replace('/');
-            }, 2000);
+                window.location.reload();
+            }, 1000);
+            
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
             toast.error('Wrong username or password.');
-            setIsLoading(false);
-        } 
+            // setIsLoading(false);
+        }
     };
 
     return (

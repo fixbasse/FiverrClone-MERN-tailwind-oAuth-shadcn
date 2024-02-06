@@ -1,19 +1,29 @@
-import { useEffect, useState } from 'react'
+import {
+    useContext,
+    useEffect,
+    useState
+} from 'react'
+
+import { newRequest } from '@/lib/newRequest'
 import CardProduct from './CardProduct'
 import FilterShowProduct from './FilterShowProduct'
 import ShowProductHeader from './ShowProductHeader'
-import { newRequest } from '@/lib/newRequest'
+import { AuthContext } from '@/context/auth/AuthContext'
 
 //* PAGE 
 const ShowProductPage = () => {
     const [showGigs, setShowGigs] = useState<any[]>([]);
+    const { setIsLoading } = useContext(AuthContext);
 
     useEffect(() => {
         const getAllGigs = async () => {
+            setIsLoading(true);
+
             try {
                 const res = await newRequest.get('/gig');
 
                 setShowGigs(res.data);
+                setIsLoading(false)
             } catch (error) {
                 console.log(error);
             };
@@ -25,6 +35,7 @@ const ShowProductPage = () => {
 
     return (
         <div className='pt-24 p-4 md:px-20'>
+            {/* <LoadingAnimate /> */}
             <ShowProductHeader />
             <hr />
 
@@ -39,7 +50,6 @@ const ShowProductPage = () => {
                     />
                 ))}
             </section>
-
         </div>
     )
 }

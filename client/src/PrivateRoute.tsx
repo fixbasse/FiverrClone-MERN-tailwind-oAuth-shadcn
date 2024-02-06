@@ -4,6 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = () => {
     const { user } = useContext(AuthContext);
+    
     return (
         user?.isSeller
             ? <Outlet />
