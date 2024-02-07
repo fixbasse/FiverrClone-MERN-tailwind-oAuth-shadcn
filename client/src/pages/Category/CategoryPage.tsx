@@ -63,9 +63,6 @@ const CategoryPage = () => {
         {/* SMALL SCREEN INFO */}
         <AccordionCategories />
       </section>
-
-
-
     </>
   )
 }

@@ -4,7 +4,6 @@ import Hero from './Hero'
 import HomeCategory from './HomeCategory'
 import Popular from './Popular'
 import Talent from './Talent'
-import LoadingAnimate from '@/components/LoadingAnimate'
 
 //* PAGE 
 const HomePage = () => {

@@ -60,7 +60,7 @@ const HomeCategory = () => {
                     to={`/show-product`}
                     //to={`/categories${item.href}`}
                     key={item.label}
-                    className='flex flex-col gap-4 border rounded-xl shadow-md p-4 text-sm text-gray-900 font-semibold h-[130px] max-h-[130px] max-w-[140px] w-[130px] cursor-pointer hover:bg-gray-50'
+                    className='flex flex-col gap-4 border rounded-xl shadow-md p-4 text-sm text-gray-900 font-semibold h-[130px] max-h-[130px] max-w-[140px] w-[130px] cursor-pointer hover:bg-gray-100 duration-300'
                 >
                     <span>
                         {item.icon}

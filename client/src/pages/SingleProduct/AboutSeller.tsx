@@ -1,15 +1,12 @@
-import { AuthContext } from "@/context/auth/AuthContext";
 import { Star } from "lucide-react";
-import { useContext } from "react";
 
 interface AboutSellerProps {
-    item: any;
-}
+    showUser: any;
+};
 
 const AboutSeller = ({
-    item
+    showUser
 }: AboutSellerProps) => {
-    const { user } = useContext(AuthContext);
 
     return (
         <div className="lg:pl-20 pt-8 p-4 md:pt-20">
@@ -21,13 +18,13 @@ const AboutSeller = ({
             {/* USER */}
             <section className="flex flex-col md:flex-row items-center gap-4 py-4">
                 <img
-                    src={user?.userImg || '/noavatar.jpg'}
+                    src={showUser?.userImg || '/noavatar.jpg'}
                     alt="/"
                     className="w-[80px] h-[80px] rounded-full"
                 />
                 <div>
                     <h2 className="text-xl font-semibold">
-                        {user?.username}
+                        {showUser?.username}
                     </h2>
                     <div className="flex items-center gap-1">
                         <Star size={15} />

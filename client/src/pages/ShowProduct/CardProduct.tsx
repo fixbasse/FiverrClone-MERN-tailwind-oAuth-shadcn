@@ -1,12 +1,10 @@
 import {
-    useContext,
     useEffect,
     useState
 } from 'react';
 import { Link } from 'react-router-dom';
 import { newRequest } from '@/lib/newRequest';
 import { Star } from 'lucide-react'
-import { AuthContext } from '@/context/auth/AuthContext';
 
 interface CardProductProps {
     item: any;
@@ -16,7 +14,6 @@ const CardProduct = ({
     item
 }: CardProductProps) => {
     const [showUser, setShowUser] = useState<any>([]); // .map type: never[]
-    const { setIsLoading } = useContext(AuthContext);
 
     //* GET USER DATA 
     useEffect(() => {
@@ -67,7 +64,7 @@ const CardProduct = ({
             </section>
 
             {/* DESCRIPTION */}
-            <p className='descript-trim text-gray-500 group-hover:underline'>
+            <p className='descript-trim font-thin group-hover:underline'>
                 {item?.description}
             </p>
 
@@ -84,7 +81,7 @@ const CardProduct = ({
                         From
                     </h4>
                     <span>
-                        ${item.price}
+                        ${item?.price}
                     </span>
                 </div>
             </section>

@@ -15,7 +15,7 @@ const Popular = () => {
                 Popular Services
             </h1>
 
-            <div className='flex justify-center gap-3 md:w-[1300px] mx-auto pt-8'>
+            <div className='flex justify-center gap-2 pt-8'>
                 <Carousel
                     opts={{
                         align: "start",
@@ -23,10 +23,10 @@ const Popular = () => {
                     className="w-full"
                 >
                     <CarouselContent className="w-full">
-                        {popularData.map((item, index) => (
+                        {popularData.map((item) => (
                             <CarouselItem
-                                key={index}
-                                className="md:basis-1/4 lg:basis-1/6"
+                                key={item.label}
+                                className=" sm:basis-1/2 md:basis-1/4 lg:basis-1/6"
                             >
                                 <Card
                                     className='h-[250px] text-white hover:opacity-80 cursor-pointer'

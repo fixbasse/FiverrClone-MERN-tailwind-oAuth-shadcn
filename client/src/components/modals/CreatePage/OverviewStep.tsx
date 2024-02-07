@@ -52,9 +52,9 @@ const OverviewStep = ({
                         className='border border-gray-400 p-3 w-full rounded-sm outline-none focus:ring-0'
                     >
                         <option value='' disabled>SELECT A CATEGORY</option>
-                        <option value='graphic'>Graphic & design</option>
-                        <option value='music'>MUSIC & AUDIO</option>
-                        <option value='programming'>PROGRAMMING & TECH</option>
+                        <option value='Graphic'>Graphic & design</option>
+                        <option value='Music'>MUSIC & AUDIO</option>
+                        <option value='Programming'>PROGRAMMING & TECH</option>
                     </select>
                     {/* <select
                         className='border border-gray-400 p-3 w-full rounded-sm outline-none focus:ring-0'

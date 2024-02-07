@@ -28,7 +28,7 @@ function App() {
         <Route path="/show-product" element={<ShowProductPage />} />
         <Route path="/single-product/:id" element={<SingleProductPage />} />
 
-        {/* ONLY LOGIN USER CAN CREATE */}
+        {/* ONLY LOGIN USER */}
         <Route element={<PrivateRoute />}>
           <Route path="/create" element={<CreatePage />} />
           <Route path="/become-a-seller/overview" element={<SellerPage />} />

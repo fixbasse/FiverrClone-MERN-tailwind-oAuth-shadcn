@@ -36,7 +36,7 @@ export const explore = [
 export const popularData = [
     {
         label: 'Website Development',
-        img: 'https://images.pexels.com/photos/461064/pexels-photo-461064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        img: 'https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         bg: ' bg-green-700'
     },
     {
@@ -51,7 +51,7 @@ export const popularData = [
     },
     {
         label: 'Software Development',
-        img: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        img: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         bg: 'bg-red-700'
     },
     {
