@@ -22,6 +22,7 @@ const ShowProductPage = () => {
             try {
                 const res = await newRequest.get('/gig');
 
+                console.log(res.data);
                 setShowGigs(res.data);
                 setIsLoading(false)
             } catch (error) {
@@ -31,7 +32,8 @@ const ShowProductPage = () => {
 
         getAllGigs();
     }, []);
-    console.log(showGigs);
+
+    //console.log(showGigs);
 
     return (
         <div className='pt-24 p-4 md:px-20'>

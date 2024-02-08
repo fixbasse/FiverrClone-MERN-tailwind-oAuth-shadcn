@@ -64,7 +64,7 @@ const CardProduct = ({
             </section>
 
             {/* DESCRIPTION */}
-            <p className='descript-trim font-thin group-hover:underline'>
+            <p className='descript-trim text-gray-500 group-hover:underline'>
                 {item?.description}
             </p>
 

@@ -31,7 +31,7 @@ export function BudgetDropdown() {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <button
-                    className="p-3 font-semibold border rounded-md hover:border hover:border-gray-900"
+                    className="p-3 font-semibold border rounded-md hover:border border-gray-900"
                 >
                     Budget
                 </button>

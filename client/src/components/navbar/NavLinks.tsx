@@ -1,8 +1,5 @@
-import {
-    useContext,
-    useEffect
-} from 'react'
-import { newRequest } from '@/lib/newRequest';
+import { useContext, useEffect } from 'react'
+
 import { AuthContext } from '@/context/auth/AuthContext';
 
 import { Modals } from '../modals/Login&Register/Modals';
@@ -20,25 +17,12 @@ const NavLinks = ({
 }: NavLinksProps) => {
     const {
         user,
-        setUser,
         setIsLoading
     } = useContext(AuthContext);
 
-    //* GET USER DATA 
     useEffect(() => {
-        const getUser = async () => {
-            try {
-                const res = await newRequest.get('/auth/login');
-
-                setUser(res.data);
-            } catch (error) {
-                console.log('Cannot fetch a user');
-            };
-        };
-
-        getUser();
-        console.log(user || 'User is logged out.');
-    }, []);
+        console.log('User is logged in.', user || 'User is logged out.');
+    }, [])
 
     // 
     const becomeSellerLink = () => {

@@ -23,7 +23,11 @@ const LoginModals = ({
     onBack
 }: LoginModalsProps) => {
     // const [isLoading, setIsloading] = useState(false);
-    const { setUser, isLoading, setIsLoading } = useContext(AuthContext);
+    const {
+        setUser,
+        isLoading,
+        setIsLoading
+    } = useContext(AuthContext);
 
     const {
         register,
@@ -48,7 +52,7 @@ const LoginModals = ({
             setTimeout(() => {
                 window.location.reload();
             }, 1000);
-            
+
             setIsLoading(false);
         } catch (error) {
             console.log(error);

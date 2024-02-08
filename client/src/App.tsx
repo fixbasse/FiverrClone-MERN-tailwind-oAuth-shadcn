@@ -14,6 +14,7 @@ import ShowProductPage from "./pages/ShowProduct/ShowProductPage"
 import SingleProductPage from "./pages/SingleProduct/SingleProductPage"
 import LoadingAnimate from "./components/LoadingAnimate"
 import ProfilePage from "./pages/Profile/ProfilePage"
+import PaymentPage from "./pages/Payment/PaymentPage"
 
 function App() {
 
@@ -34,6 +35,8 @@ function App() {
           <Route path="/become-a-seller/overview" element={<SellerPage />} />
           <Route path="/become-a-seller/seller_info" element={<InfoSeller />} />
           <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/payment" element={<PaymentPage />} />
+
         </Route>
 
       </Routes>

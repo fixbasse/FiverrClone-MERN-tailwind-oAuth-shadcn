@@ -17,7 +17,7 @@ const ShowProductHeader = () => {
             </section>
 
 
-            <section className="flex items-center gap-4 text-gray-500 pb-4 text-sm md:text-base">
+            <section className="flex items-center gap-4 pb-4 text-sm md:text-base">
                 <Home size={20} />
                 <span>/</span>
                 <span>

@@ -1,14 +1,17 @@
 import {
     useCallback,
+    useContext,
     useEffect,
     useState
 } from 'react'
 
 import LogoAndMenubar from './LogoAndMenubar'
 import NavLinks from './NavLinks'
+import { AuthContext } from '@/context/auth/AuthContext';
 
 const Navbar = () => {
     const [onScroll, setOnScroll] = useState(false);
+    const { isLoading } = useContext(AuthContext);
 
     const isActive = useCallback(() => {
         window.scrollY > 0 ? setOnScroll(true) : setOnScroll(false);
@@ -23,11 +26,18 @@ const Navbar = () => {
     }, [isActive]);
 
     return (
-        <nav className={`bg-orange-900 text-white px-6 lg:px-20 h-[80px] max-h-[80px] flex items-center justify-between fixed w-full z-50
-        ${onScroll && 'bg-white duration-500 ease-in-out'}
+        <nav className={`bg-orange-900 text-white px-6 lg:px-20 h-[80px] max-h-[80px] flex items-center justify-between w-full z-50
+             ${onScroll && 'bg-white duration-500 ease-in-out'}
+             ${isLoading
+                ? ''
+                : 'fixed'}
         `}>
-            <LogoAndMenubar onScroll={onScroll} />
-            <NavLinks onScroll={onScroll} />
+            <LogoAndMenubar
+                onScroll={onScroll}
+            />
+            <NavLinks
+                onScroll={onScroll}
+            />
         </nav>
     )
 }

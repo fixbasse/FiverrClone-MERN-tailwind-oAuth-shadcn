@@ -6,7 +6,7 @@ const LoadingAnimate = () => {
 
     return (
         <div className={isLoading ? (
-            'fixed inset-0 bg-gray-300 opacity-90 z-100 flex items-center justify-center gap-4'
+            'fixed inset-0 bg-gray-300 opacity-90 z-50 flex items-center justify-center gap-4'
         ) : (
             'hidden'
         )}>

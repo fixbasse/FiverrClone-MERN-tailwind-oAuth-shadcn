@@ -17,13 +17,14 @@ const SingleProductLeft = ({
 }: SingleProductLeftProps) => {
     const [showUser, setShowUser] = useState<any>([]);
 
-    //* GET Seller By ID (fetch from GigData which contain userId) 
+    //* GET Seller By ID (fetch from GigData) 
     useEffect(() => {
         const getUserById = async () => {
             try {
-                const res = await newRequest.get(`/user/${item.userId}`);
+                const res = await newRequest.get(`/user/${item?.userId}`);
+
+                console.log(res.data);
                 setShowUser(res.data);
-                console.log(showUser);
             } catch (error) {
                 console.log(error);
             };
@@ -33,7 +34,7 @@ const SingleProductLeft = ({
     }, [item]); // need this data first
 
     return (
-        <section className="flex-[7]">
+        <>
             {/* HEADER */}
             <div className="flex items-center gap-4 p-4 lg:px-20">
                 <Home />
@@ -55,12 +56,16 @@ const SingleProductLeft = ({
                     alt="/"
                     className="w-[40px] h-[40px] md:w-[60px] md:h-[60px] rounded-full"
                 />
+
+                {/* REVIEWS */}
                 <div>
                     <h2 className="text-xl font-semibold">
                         {showUser?.username}
                     </h2>
                     <div className="flex items-center gap-1">
-                        <Star size={15} />
+                        <Star
+                            size={15}
+                        />
                         <span>4</span>
                     </div>
                 </div>
@@ -93,7 +98,7 @@ const SingleProductLeft = ({
             <AboutSeller
                 showUser={showUser}
             />
-        </section>
+        </>
     )
 }
 

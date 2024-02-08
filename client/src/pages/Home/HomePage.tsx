@@ -8,15 +8,19 @@ import Talent from './Talent'
 //* PAGE 
 const HomePage = () => {
   return (
-    <>
-      {/* <LoadingAnimate /> */}
+    <div className='relative'>
       <Hero />
       <HomeCategory />
       <Popular />
       <GetStart />
       <Talent />
       <Banner />
-    </>
+
+      {/* Line */}
+      {/* <div className='absolute right-0 top-0 w-[20px] h-full bg-gray-100 opacity-80 z-50'>
+        
+      </div> */}
+    </div>
   )
 }
 

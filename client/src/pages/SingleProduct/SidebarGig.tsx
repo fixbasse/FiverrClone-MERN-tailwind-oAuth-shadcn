@@ -11,7 +11,7 @@ const SidebarGig = ({
 }: SidebarGigProps) => {
 
     return (
-        <section className="flex-[3] p-4 md:px-20">
+        <>
             <div className="flex items-center gap-2 justify-end pb-4">
                 <Menu />
                 <Share2Icon />
@@ -30,7 +30,7 @@ const SidebarGig = ({
                     <span className="font-medium">
                         Save up to 10% by subscribe.
                     </span>
-                    <h2 className="py-4 font-light">
+                    <h2 className="py-4 text-gray-400">
                         {item?.description}
                     </h2>
 
@@ -43,11 +43,13 @@ const SidebarGig = ({
                     </div>
 
                     {/* CONTINUE BTN */}
-                    <CartSidebar />
+                    <CartSidebar 
+                    item={item}
+                    />
                 </div>
 
             </div>
-        </section>
+        </>
     )
 }
 
