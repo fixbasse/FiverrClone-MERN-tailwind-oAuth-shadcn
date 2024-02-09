@@ -11,7 +11,10 @@ import { AuthContext } from '@/context/auth/AuthContext';
 
 const Navbar = () => {
     const [onScroll, setOnScroll] = useState(false);
-    const { isLoading } = useContext(AuthContext);
+    const { 
+        isLoading 
+    } = useContext(AuthContext);
+
 
     const isActive = useCallback(() => {
         window.scrollY > 0 ? setOnScroll(true) : setOnScroll(false);

@@ -49,6 +49,10 @@ const gigSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    img: {
+        type: String,
+        required: false,
+    },
 },
     { timestamps: true }
 );

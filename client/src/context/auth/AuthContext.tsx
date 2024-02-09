@@ -19,6 +19,8 @@ interface CurrentUserContextType {
   // setAuthTokens: React.Dispatch<React.SetStateAction<AccessTokensType>>;
   user: User | undefined | string | any;
   setUser: React.Dispatch<React.SetStateAction<string | undefined>>;
+  totalPrice: number | undefined;
+  setTotalPrice: React.Dispatch<React.SetStateAction<number | undefined>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   callLogOut: () => void;
@@ -42,6 +44,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [totalPrice, setTotalPrice] = useState<number | undefined>(() =>
+    localStorage.getItem('price')
+      ? JSON.parse(localStorage.getItem('price') || '')
+      : undefined
+  );
 
   //* LOGOUT 
   const callLogOut = async () => {
@@ -56,7 +63,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.removeItem('currentUser');
       setIsLoading(false);
       setUser(undefined);
-     // window.location.reload();
+      // window.location.reload();
     } catch (error) {
       toast.error('Something went wrong!');
       console.log(error);
@@ -68,6 +75,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         user,
         setUser,
+        totalPrice,
+        setTotalPrice,
         isLoading,
         setIsLoading,
         callLogOut

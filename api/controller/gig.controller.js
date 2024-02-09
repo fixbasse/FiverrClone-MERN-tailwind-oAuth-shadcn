@@ -12,7 +12,7 @@ const createGig = async (req, res) => {
         // const usernameDb = await User.findOne({ username: req.body.username });
 
         const newGig = new Gig({
-            userId: req.userId,
+            sellerId: req.userId,
             username: req.username,
             ...req.body,
         });

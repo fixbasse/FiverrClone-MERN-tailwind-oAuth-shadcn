@@ -6,8 +6,9 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import { AuthContext } from "@/context/auth/AuthContext";
 import { ArrowRightIcon, Minus, Plus } from "lucide-react"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface CartSidebarProps {
@@ -18,11 +19,20 @@ export function CartSidebar({
     item
 }: CartSidebarProps) {
     const [gigQuantity, setGigQuantity] = useState<number>(1);
-    const [totalPrice, setTotalPrice] = useState<number>();
+    const {
+        totalPrice,
+        setTotalPrice
+    } = useContext(AuthContext);
 
     useEffect(() => {
         setTotalPrice((item?.price) * gigQuantity);
     }, [item?.price, gigQuantity]);
+
+    // 
+    const handlePrice = () => {
+        setTotalPrice((item?.price) * gigQuantity);
+        localStorage.setItem('price', JSON.stringify(totalPrice));
+    };
 
     //* PLUS 
     const increment = () => {
@@ -121,7 +131,9 @@ export function CartSidebar({
                 <SheetFooter className="p-4">
                     <Link
                         to='/payment'
-                        className="relative flex items-center justify-center gap-1 font-semibold bg-gray-800 text-white p-2 rounded-sm w-full hover:opacity-90">
+                        onClick={handlePrice}
+                        className="relative flex items-center justify-center gap-1 font-semibold bg-gray-800 text-white p-2 rounded-sm w-full hover:opacity-90"
+                    >
                         Continue
                         (${totalPrice})
                     </Link>

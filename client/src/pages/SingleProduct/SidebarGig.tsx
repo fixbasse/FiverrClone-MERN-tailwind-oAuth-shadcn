@@ -43,8 +43,8 @@ const SidebarGig = ({
                     </div>
 
                     {/* CONTINUE BTN */}
-                    <CartSidebar 
-                    item={item}
+                    <CartSidebar
+                        item={item}
                     />
                 </div>
 

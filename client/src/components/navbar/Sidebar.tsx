@@ -1,12 +1,12 @@
 
 import { Menu } from "lucide-react"
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet"
+import { Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet"
 import { FiverProDropdown } from "../dropdowns/FiverrProDropdown"
 import { ExploreDropdown } from "../dropdowns/ExploreDropdown"
 import { Modals } from "../modals/Login&Register/Modals"
 import { AuthContext } from "@/context/auth/AuthContext"
 import { useContext } from "react"
-import { UserMenuDropdown } from "../dropdowns/UserMenuDropdown"
+
 import { Link } from "react-router-dom"
 import { sidebarData } from "@/data/data"
 

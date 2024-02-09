@@ -14,6 +14,7 @@ const userDb = require('./models/user');
 const authRoute = require('./routes/auth.route');
 const userRoute = require('./routes/user.route');
 const gigRoute = require('./routes/gig.route');
+const orderRoute = require('./routes/order.route');
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ mongoose.connect(process.env.MONGO_URL)
 app.use('/api/auth', authRoute);
 app.use('/api/user', userRoute);
 app.use('/api/gig', gigRoute);
+app.use('/api/order', orderRoute);
 
 // Setup session
 app.use(session({
