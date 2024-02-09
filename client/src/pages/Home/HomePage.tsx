@@ -8,7 +8,7 @@ import Talent from './Talent'
 //* PAGE 
 const HomePage = () => {
   return (
-    <div className='relative'>
+    <div className='relative pb-8'>
       <Hero />
       <HomeCategory />
       <Popular />

@@ -50,11 +50,11 @@ const CardProduct = ({
             <section className='flex justify-between items-center py-2'>
                 <div className='flex items-center gap-2'>
                     <img
-                        src="https://images.pexels.com/photos/19748403/pexels-photo-19748403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                        src={showUser?.imgUrl || '/noavatar.jpg'}
                         alt="userImg"
                         className='w-[30px] h-[30px] rounded-full'
                     />
-                    <h3 className='font-semibold'>
+                    <h3 className='font-bold'>
                         {showUser?.username}
                     </h3>
                 </div>
@@ -64,7 +64,7 @@ const CardProduct = ({
             </section>
 
             {/* DESCRIPTION */}
-            <p className='descript-trim text-gray-500 group-hover:underline'>
+            <p className='descript-trim font-light group-hover:underline'>
                 {item?.description}
             </p>
 

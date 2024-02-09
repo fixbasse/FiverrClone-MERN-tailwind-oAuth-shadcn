@@ -2,11 +2,11 @@ import { Search } from "lucide-react"
 
 const Hero = () => {
   return (
-    <div className='h-[100dvh] bg-orange-900 flex items-center justify-center px-4 lg:px-20 gap-10'>
+    <div className='h-[100dvh] bg-orange-900 flex items-center justify-center px-4 lg:px-20 gap-10 relative'>
 
       {/* LEFT */}
-      <section className="md:flex-1 w-full sm:w-[500px] flex flex-col gap-4 text-white z-10">
-        <article>
+      <section className="lg:flex-1 sm:w-[500px] flex flex-col gap-4 text-white z-10">
+        <div>
           <h1 className="text-4xl md:text-5xl font-semibold text-white">
             Find the right
             <span className="italic font-light"> freelance </span>
@@ -14,13 +14,13 @@ const Hero = () => {
           <h1 className="text-4xl md:text-5xl font-semibold text-white">
             service, right away
           </h1>
-        </article>
+        </div>
 
         {/* SEARCH */}
         <div className="flex flex-col md:flex-row gap-4 md:gap-0">
           <input
             type="text"
-            className="max-[768px]:rounded-md md:rounded-l-md w-full p-3 outline-none focus:ring-0"
+            className="max-[768px]:rounded-md md:rounded-l-md md:w-[600px] p-3 outline-none focus:ring-0 text-gray-800"
           />
 
           <div className="bg-green-500 p-3 max-[768px]:rounded-md md:rounded-r-md px-6 cursor-pointer">
@@ -56,10 +56,11 @@ const Hero = () => {
       </section>
 
       {/* RIGHT */}
-      <section className="md:flex-1 hidden md:block">
+      <section className="hidden lg:block absolute bottom-0 right-0">
         <img
           src="/man.png"
-          alt="/"
+          alt="manBg"
+          className="w-full h-[90dvh] object-contain"
         />
       </section>
 

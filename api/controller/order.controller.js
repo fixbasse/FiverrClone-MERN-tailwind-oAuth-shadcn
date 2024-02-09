@@ -9,7 +9,7 @@ const createOrder = async (req, res) => {
         const newOrder = new Order({
             gigId: gig._id,
             gigImg: gig.img,
-            title: gig.title,
+            title: gig.packageName,
             price: gig.price,
             sellerId: gig.userId,
             buyerId: req.userId,

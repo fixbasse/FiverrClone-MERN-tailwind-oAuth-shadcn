@@ -22,15 +22,24 @@ export function UserMenuDropdown() {
                 />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-[150px]">
-                <DropdownMenuCheckboxItem
-                    className="p-2 hover:text-orange-800 hover:font-medium"
-                >
-                    <Link
-                        to='/profile/1'
-                        className=" ">
+                <Link
+                    to='/profile/1'
+                    className=" ">
+                    <DropdownMenuCheckboxItem
+                        className="p-2 hover:text-orange-800 hover:font-medium"
+                    >
                         Profile
-                    </Link>
-                </DropdownMenuCheckboxItem>
+                    </DropdownMenuCheckboxItem>
+                </Link>
+                <Link
+                    to='/orders'
+                    className=" ">
+                    <DropdownMenuCheckboxItem
+                        className="p-2 hover:text-orange-800 hover:font-medium"
+                    >
+                        Orders
+                    </DropdownMenuCheckboxItem>
+                </Link>
                 <DropdownMenuCheckboxItem
                     className="p-2"
                     onClick={callLogOut}
