@@ -39,7 +39,7 @@ const login = async (req, res) => {
             email: user.email,
             isSeller: user.isSeller,
         },
-            process.env.JWT_SECRET
+            process.env.JWT_SECRET, { expiresIn: '1h' } // new
         );
 
         const { password, ...userInfo } = user._doc;

@@ -20,10 +20,9 @@ export function Sidebar() {
     const becomeSellerLink = () => {
         setIsLoading(true);
 
-        setTimeout(() => {
-            window.location.replace('/become-a-seller/overview');
-        }, 500);
+        window.location.replace('/become-a-seller/overview');
     };
+    
     return (
         <div>
             {SHEET_SIDES.map((side) => (
@@ -57,7 +56,7 @@ export function Sidebar() {
                                     <Link
                                         key={item.label}
                                         to={item.href}
-                                        className="hover:bg-gray-100 hover:text-gray-950 px-2 py-2 rounded-md w-full"
+                                        className="hover:bg-gray-100 font-medium px-2 py-2 rounded-md w-full"
                                     >
                                         {item.label}
                                     </Link>

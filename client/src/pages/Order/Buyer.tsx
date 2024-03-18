@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 
 interface BuyerProps {
     buyer: any;
-};
+}
 
 const Buyer = ({
     buyer
@@ -29,7 +29,7 @@ const Buyer = ({
         };
 
         fetchBuyer();
-    }, [buyer]);
+    }, [buyer, setIsLoading]);
 
     return (
         <th className="font-light">

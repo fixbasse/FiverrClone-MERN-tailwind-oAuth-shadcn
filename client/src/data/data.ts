@@ -157,7 +157,7 @@ export const sidebarData = [
     },
     {
         label: 'Inbox',
-        href: '/inbox',
+        href: '/messages',
     },
     {
         label: 'Manage Orders',

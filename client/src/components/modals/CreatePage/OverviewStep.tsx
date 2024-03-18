@@ -1,15 +1,6 @@
 
 import { FieldValues, UseFormRegister } from 'react-hook-form'
 
-export const categoriesValue = [
-    {
-        label: 'Graphic & Design'
-    },
-    {
-        label: 'Graphic & Design'
-    },
-]
-
 interface OverviewProps {
     register: UseFormRegister<FieldValues>
 }
@@ -17,11 +8,10 @@ interface OverviewProps {
 const OverviewStep = ({
     register
 }: OverviewProps) => {
-    console.log({ ...register('category') });
 
     return (
         <>
-        <hr />
+            <hr />
             <section className='grid md:grid-cols-3 gap-2'>
                 <div className='col-span-1'>
                     <h3 className='font-semibold text-xl'>
@@ -56,14 +46,6 @@ const OverviewStep = ({
                         <option value='Music'>MUSIC & AUDIO</option>
                         <option value='Programming'>PROGRAMMING & TECH</option>
                     </select>
-                    {/* <select
-                        className='border border-gray-400 p-3 w-full rounded-sm outline-none focus:ring-0'
-                    >
-                        <option>SELECT A SUB CATEGORY</option>
-                        <option>WEBSITE DEVELOPMENT</option>
-                        <option>MUSIC & AUDIO</option>
-                        <option>PROGRAMMING & TECH</option>
-                    </select> */}
                 </div>
             </section>
 

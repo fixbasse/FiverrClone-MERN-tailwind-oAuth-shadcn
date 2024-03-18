@@ -8,12 +8,14 @@ import {
 import LogoAndMenubar from './LogoAndMenubar'
 import NavLinks from './NavLinks'
 import { AuthContext } from '@/context/auth/AuthContext';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const [onScroll, setOnScroll] = useState(false);
-    const { 
-        isLoading 
+    const {
+        isLoading
     } = useContext(AuthContext);
+    const { pathname } = useLocation();
 
 
     const isActive = useCallback(() => {
@@ -34,6 +36,7 @@ const Navbar = () => {
              ${isLoading
                 ? ''
                 : 'fixed'}
+             ${pathname !== '/' && 'bg-white'}   
         `}>
             <LogoAndMenubar
                 onScroll={onScroll}

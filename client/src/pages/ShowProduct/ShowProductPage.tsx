@@ -9,10 +9,11 @@ import CardProduct from './CardProduct'
 import FilterShowProduct from './FilterShowProduct'
 import ShowProductHeader from './ShowProductHeader'
 import { AuthContext } from '@/context/auth/AuthContext'
+import { Product } from '@/types'
 
 //* PAGE 
 const ShowProductPage = () => {
-    const [showGigs, setShowGigs] = useState<any[]>([]);
+    const [showGigs, setShowGigs] = useState<Array<Product>>([]);
     const { setIsLoading } = useContext(AuthContext);
 
     useEffect(() => {
@@ -27,7 +28,7 @@ const ShowProductPage = () => {
                 setIsLoading(false)
             } catch (error) {
                 console.log(error);
-            };
+            }
         };
 
         getAllGigs();

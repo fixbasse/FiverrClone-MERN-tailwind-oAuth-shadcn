@@ -10,11 +10,12 @@ import { newRequest } from "@/lib/newRequest";
 
 import SingleProductLeft from "./SingleProductLeft";
 import SidebarGig from "./SidebarGig";
+import { Product } from "@/types";
 
 //* PAGE 
 const SingleProductPage = () => {
     const { id: gigId } = useParams(); // need to match :id at App.tsx first
-    const [gig, setGig] = useState<any[]>([]);
+    const [gig, setGig] = useState<Array<Product>>([]);
     const { setIsLoading } = useContext(AuthContext);
 
     //* GET By ID

@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 interface RegisterModalsProps {
     register: boolean;
     onBack: () => void;
-};
+}
 
 type AuthInput = {
     username: string;
@@ -47,7 +47,7 @@ const RegisterModals = ({
         } catch (error) {
             console.log(error);
             toast.error('Something went wrong.');
-        };
+        }
     };
 
     return (

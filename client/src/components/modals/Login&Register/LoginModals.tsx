@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 interface LoginModalsProps {
     login: boolean;
     onBack: () => void;
-};
+}
 
 type AuthInput = {
     email: string;
@@ -22,7 +22,6 @@ const LoginModals = ({
     login,
     onBack
 }: LoginModalsProps) => {
-    // const [isLoading, setIsloading] = useState(false);
     const {
         setUser,
         isLoading,
@@ -51,24 +50,27 @@ const LoginModals = ({
             toast.success('Login success!');
             setTimeout(() => {
                 window.location.reload();
-            }, 1000);
+            }, 2000);
 
             setIsLoading(false);
         } catch (error) {
             console.log(error);
             toast.error('Wrong username or password.');
-            // setIsLoading(false);
         }
     };
 
     return (
         <section className={`text-gray-800 p-8
-         ${login ? 'block' : 'hidden'}
-    `}>
-            {/* Back */}
+         ${login
+                ? 'block'
+                : 'hidden'}
+        `}>
+
+            {/* BACK */}
             <div
                 onClick={onBack}
-                className="flex items-center gap-1 text-gray-700 text-sm pb-4 cursor-pointer">
+                className="flex items-center gap-1 text-gray-700 text-sm pb-4 cursor-pointer"
+            >
                 <ArrowLeft size={15} />
                 Back
             </div>
@@ -76,6 +78,7 @@ const LoginModals = ({
                 Continue with email
             </h2>
 
+            {/* LOGIN FORM =============> */}
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-2 pt-8"
@@ -107,7 +110,7 @@ const LoginModals = ({
                     type="submit"
                     disabled={isLoading}
                     className={`bg-gray-900 text-gray-50 font-semibold p-3 my-4 rounded-md
-                ${isLoading && 'bg-gray-100 opacity-75 '}
+                ${isLoading && 'bg-gray-100 opacity-75'}
                 `}>
                     Continue
                 </button>

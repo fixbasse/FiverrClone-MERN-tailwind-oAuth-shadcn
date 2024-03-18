@@ -40,6 +40,15 @@ export function UserMenuDropdown() {
                         Orders
                     </DropdownMenuCheckboxItem>
                 </Link>
+                <Link
+                    to='/messages'
+                    className=" ">
+                    <DropdownMenuCheckboxItem
+                        className="p-2 hover:text-orange-800 hover:font-medium"
+                    >
+                        Messages
+                    </DropdownMenuCheckboxItem>
+                </Link>
                 <DropdownMenuCheckboxItem
                     className="p-2"
                     onClick={callLogOut}
@@ -52,4 +61,4 @@ export function UserMenuDropdown() {
             </DropdownMenuContent>
         </DropdownMenu>
     )
-};
+}

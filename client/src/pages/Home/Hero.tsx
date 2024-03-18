@@ -6,7 +6,7 @@ const Hero = () => {
 
       {/* LEFT */}
       <section className="lg:flex-1 sm:w-[500px] flex flex-col gap-4 text-white z-10">
-        <div>
+        <div className=" tracking-[-1.6px]">
           <h1 className="text-4xl md:text-5xl font-semibold text-white">
             Find the right
             <span className="italic font-light"> freelance </span>

@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 interface ModalsProps {
     title: string;
     onScroll?: boolean;
-};
+}
 
 export function Modals({
     title,
@@ -32,10 +32,10 @@ export function Modals({
     const onBack = useCallback(() => {
         if (register) {
             setRegister(!register);
-        };
+        }
 
         setLogin(false);
-    }, [register, login]);
+    }, [register]);
 
     //* WITH GOOGLE
     const loginWithGoogle = () => {
@@ -112,6 +112,7 @@ export function Modals({
                                 <div className="absolute left-4">
                                     <Mail size={20} />
                                 </div>
+                            
                                 <h2 className="font-semibold">
                                     Continue with Email & Password
                                 </h2>

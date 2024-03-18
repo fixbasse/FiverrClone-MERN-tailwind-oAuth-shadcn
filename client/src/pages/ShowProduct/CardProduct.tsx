@@ -5,15 +5,16 @@ import {
 import { Link } from 'react-router-dom';
 import { newRequest } from '@/lib/newRequest';
 import { Star } from 'lucide-react'
+import { Product, User } from '@/types';
 
 interface CardProductProps {
-    item: any;
-};
+    item: Product;
+}
 
 const CardProduct = ({
     item
 }: CardProductProps) => {
-    const [showUser, setShowUser] = useState<any>([]); // .map type: never[]
+    const [showUser, setShowUser] = useState<Array<User>>([]);
 
     //* GET USER DATA 
     useEffect(() => {

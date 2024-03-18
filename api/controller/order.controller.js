@@ -27,7 +27,9 @@ const createOrder = async (req, res) => {
 const getAllOrder = async (req, res) => {
     try {
         const order = await Order.find({
-            ...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+            ...(req.isSeller
+                ? { sellerId: req.userId }
+                : { buyerId: req.userId }),
             isCompleted: true,
         });
         if (!order) return res.status(404).send('No order.');

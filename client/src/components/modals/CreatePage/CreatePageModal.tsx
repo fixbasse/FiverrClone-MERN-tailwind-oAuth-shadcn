@@ -1,5 +1,5 @@
-import { useCallback, useContext, useEffect, useState } from 'react'
-import LayoutCreatePageModal from './LayoutCreatePageModal'
+import { useCallback, useContext, useState } from 'react'
+import LayoutCreatePageModal from '.'
 import OverviewStep from './OverviewStep';
 import PricingStep from './PricingStep';
 import DescriptionStep from './DescriptionStep';
@@ -17,7 +17,7 @@ enum STEPS {
     DESCRIPTION = 2,
     IMAGE = 3,
     PUBLISH = 4,
-};
+}
 
 // export type FormValues = {
 //     title: string;
@@ -46,15 +46,11 @@ const CreatePageModal = () => {
         setSteps((value) => value - 1);
     };
 
-    useEffect(() => {
-
-    }, []);
-
     //* Submit & Next  
     const onSubmit: SubmitHandler<FieldValues> = async (value) => {
         if (steps !== STEPS.PUBLISH) {
             return onNext();
-        };
+        }
 
         console.log(value);
         setIsLoading(true);
@@ -78,7 +74,7 @@ const CreatePageModal = () => {
     const handleBack = useCallback(() => {
         if (steps === STEPS.OVERVIEW) {
             return null;
-        };
+        }
 
         onBack();
     }, [onBack]);
@@ -110,7 +106,7 @@ const CreatePageModal = () => {
                 />
             </>
         )
-    };
+    }
 
     //* 3rd STEPS DESCRIPTION 
     if (steps === STEPS.DESCRIPTION) {
@@ -125,7 +121,7 @@ const CreatePageModal = () => {
                 />
             </>
         )
-    };
+    }
 
     //* 4 STEPS IMAGE
     if (steps === STEPS.IMAGE) {

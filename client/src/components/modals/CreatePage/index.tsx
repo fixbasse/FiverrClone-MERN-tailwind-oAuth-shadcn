@@ -7,7 +7,7 @@ interface LayoutCreateModalProps {
     disabled?: boolean;
     label: string;
     subLabel?: string;
-};
+}
 
 const LayoutCreatePageModal = ({
     body,
@@ -20,7 +20,7 @@ const LayoutCreatePageModal = ({
     const handleSubmit = useCallback(() => {
         if (disabled) {
             return;
-        };
+        }
 
         submitButton();
     }, [submitButton, disabled]);

@@ -3,15 +3,14 @@
 -Auth 
 -Create Gig - POST
 -Display all gig - GET 
+-Display single gig - GET BY ID
+-Order and ShowOrders - GET
 
 <!-- ** NOW -->
+-Purchase and buy / User Cart
 -Filter Gig with CATEGORY
--Display Single Gig - GET BY ID
 -Delete Gig - DELETE
-
--User choose to become seller
 -Purchase
--Diplay orders when someone purchase
 -User account - PUT 
 -Chat App - POST
 -Review - POST
@@ -44,6 +43,7 @@ Gig
 
 Orders
 - Order Data
+- gigId, sellerId, buyerId
 - Notified order to seller
 
 <!-- Modals -->

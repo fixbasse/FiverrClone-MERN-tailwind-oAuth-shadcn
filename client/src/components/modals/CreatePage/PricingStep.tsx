@@ -3,7 +3,7 @@ import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form"
 interface PricingProps {
     register: UseFormRegister<FieldValues>;
     errors?: FieldErrors<FieldValues>;
-};
+}
 
 const PricingStep = ({
     register,

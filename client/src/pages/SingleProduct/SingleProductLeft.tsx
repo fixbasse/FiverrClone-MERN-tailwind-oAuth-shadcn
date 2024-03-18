@@ -6,16 +6,17 @@ import {
 import AboutSeller from './AboutSeller'
 import { Home, Star } from 'lucide-react'
 import { newRequest } from '@/lib/newRequest';
+import { Product, User } from '@/types';
 
 interface SingleProductLeftProps {
-    item: any;
-};
+    item: Product;
+}
 
 //* LEFT 
 const SingleProductLeft = ({
     item,
 }: SingleProductLeftProps) => {
-    const [showUser, setShowUser] = useState<any>([]);
+    const [showUser, setShowUser] = useState<Array<User>>([]);
 
     //* GET Seller By ID (fetch from GigData) 
     useEffect(() => {
@@ -27,7 +28,7 @@ const SingleProductLeft = ({
                 setShowUser(res.data);
             } catch (error) {
                 console.log(error);
-            };
+            }
         };
 
         getUserById();

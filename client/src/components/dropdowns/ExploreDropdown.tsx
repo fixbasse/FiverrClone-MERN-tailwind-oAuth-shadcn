@@ -8,7 +8,7 @@ import { explore } from "@/data/data"
 
 interface ExploreProps {
     onScroll?: boolean;
-};
+}
 
 export function ExploreDropdown({
     onScroll

@@ -1,9 +1,10 @@
 import { Clock, Menu, Share2Icon } from "lucide-react";
 import { CartSidebar } from '@/components/navbar/CartSidebar';
+import { Product } from "@/types";
 
 interface SidebarGigProps {
-    item: any;
-};
+    item: Product;
+}
 
 //* RIGHT 
 const SidebarGig = ({

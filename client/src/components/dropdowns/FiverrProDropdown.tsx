@@ -10,7 +10,7 @@ import { Glasses, Pencil } from "lucide-react"
 
 interface FiverProsProps {
     onScroll?: boolean;
-};
+}
 
 export function FiverProDropdown({
     onScroll

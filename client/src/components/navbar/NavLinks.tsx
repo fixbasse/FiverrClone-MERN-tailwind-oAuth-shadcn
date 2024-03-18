@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 
 import { AuthContext } from '@/context/auth/AuthContext';
 
@@ -6,10 +6,11 @@ import { Modals } from '../modals/Login&Register/Modals';
 import { UserMenuDropdown } from '../dropdowns/UserMenuDropdown';
 import { FiverProDropdown } from '../dropdowns/FiverrProDropdown';
 import { ExploreDropdown } from '../dropdowns/ExploreDropdown';
+import { useLocation } from 'react-router-dom';
 
 interface NavLinksProps {
     onScroll: boolean;
-};
+}
 
 const NavLinks = ({
     onScroll,
@@ -19,10 +20,9 @@ const NavLinks = ({
         user,
         setIsLoading
     } = useContext(AuthContext);
+    const { pathname } = useLocation();
 
-    useEffect(() => {
-        console.log('User is logged in.', user || 'User is logged out.');
-    }, [])
+    console.log(user);
 
     // 
     const becomeSellerLink = () => {
@@ -52,7 +52,9 @@ const NavLinks = ({
                         className={`hidden md:block
                     ${onScroll
                             && 'hover:text-orange-800 text-gray-500'}
+                    ${pathname !== '/' && 'text-gray-900'}  
                     `}>
+
                         Become a Seller
                     </button>
                 ) : (
@@ -73,7 +75,7 @@ const NavLinks = ({
                         onScroll={onScroll}
                     />
                 </div>
-                <div className={user ? 'hidden' : 'block md:hidden border p-2 rounded-sm px-6'}>
+                <div className={user ? 'hidden' : 'hidden min-[425px]:block border p-2 rounded-sm px-6'}>
                     <Modals
                         title='Join'
                         onScroll={onScroll}
